@@ -6,7 +6,7 @@ Tycoon Mode is separate from regular PlateUp!. Your normal runs and saves are ne
 
 ## Installation
 
-**You need:** PlateUp! on Steam (Windows), plus these two free mods from the Steam Workshop:
+**You need:** PlateUp! on Steam (Windows), plus these two dependencies from the Steam Workshop:
 - [KitchenLib](https://steamcommunity.com/sharedfiles/filedetails/?id=2898069883)
 - [Harmony](https://steamcommunity.com/sharedfiles/filedetails/?id=2898033283)
 
@@ -16,7 +16,7 @@ Tycoon Mode is separate from regular PlateUp!. Your normal runs and saves are ne
 4. Open the **Mods** folder inside it (create it if it isn't there).
 5. Copy the **PlateUpTycoon** folder from the zip into **Mods**. It should end up as:
    `...\PlateUp\PlateUp\Mods\PlateUpTycoon\content\PlateUpTycoon.dll`
-6. Start PlateUp!. The title screen now has a **Play Tycoon** button.
+6. Start PlateUp!. The title screen will now display the **Play Tycoon** button.
 
 **Updating:** close the game and replace the PlateUpTycoon folder with the one from the new zip.
 
