@@ -11,7 +11,7 @@ namespace PlateUpTycoon
         public const string MOD_GUID = "com.lucas.plateuptycoon";
         public const string MOD_NAME = "Tycoon Mode";
         public const string MOD_VERSION = "0.3.0";
-        public const string BUILD = "2026-11-25 hs (public export with minimal comments; no build letters in log lines or resource notes)";
+        public const string BUILD = "2026-11-25 ht (first public release, 0.3.0)";
         public const string MOD_AUTHOR = "supedaglup";
         public const string MOD_GAMEVERSION = ">=1.1.9";
 
