@@ -19,7 +19,9 @@ Tycoon Mode is separate from regular PlateUp!. Your normal runs and saves are ne
 6. Start PlateUp!. The title screen now has a **Play Tycoon** button.
 
 **Updating:** close the game and replace the PlateUpTycoon folder with the one from the new zip.
+
 **Uninstalling:** delete the PlateUpTycoon folder.
+
 **Multiplayer:** every player needs the mod, on the same version.
 
 ## Getting started
