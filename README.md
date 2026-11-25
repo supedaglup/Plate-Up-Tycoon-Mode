@@ -1,8 +1,6 @@
 # PlateUp! Tycoon Mode
 
-Tycoon Mode turns PlateUp! into one long restaurant-management game. Instead of a fifteen-day roguelike run, you build a
-company: you open a small coffee stand, pay real running costs every night, take out loans, buy every appliance and
-recipe yourself, earn stars from food critics, and grow into a chain of up to five restaurants.
+Tycoon Mode is a complete overhaul mod that introduces an entirely new game mode selectable from the Main Menu screen. It transforms PlateUp!'s traditional, rogue-like gameplay loop into a longform restaurant management simulator, where you must earn your stars by increasing your restaurant's Reputation, through a variety of means.
 
 Everything in Tycoon Mode is separate from regular PlateUp!: start it from **Play Tycoon** on the title screen. Your
 normal runs and saves are untouched.
@@ -139,9 +137,9 @@ Every group in the queue has its own patience bar. When it runs out, that group 
 reputation. With Take-Out on, the patience left when a customer reaches the counter carries over to waiting for their
 order and their food.
 
-### Recipes, Recipe Mastery and the recipe shop (Smokey)
+### Recipes, Recipe Mastery and the recipe shop
 
-- Smokey sells recipes in three sections: main dishes, starters and desserts, and add-ons for a dish.
+- A new NPC in the HQ sells recipes in three sections: main dishes, starters and desserts, and add-ons for a dish.
 - Every dish you serve builds that recipe's **Recipe Mastery**. Each level unlocks the recipe's next add-on as a card
   in the Card Manager, so add-ons are earned by cooking, not bought.
 - Harder dishes, add-ons you have switched on, a busy kitchen and better ingredients all speed Mastery up. Starters and
