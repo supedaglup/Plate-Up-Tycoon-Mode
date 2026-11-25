@@ -58,13 +58,11 @@ Tycoon Mode is separate from regular PlateUp!. Your normal runs and saves are ne
 
 | Stars | Unlocks |
 |---|---|
-| 1 | Upgraded appliances, Dish Pricing |
-| 2 | Wallpaper and flooring, Ingredient Quality |
-| 3 | Business Hours, theme cards, Marketing, Fast Casual Dining |
+| 1 | Upgraded Appliances, Dish Pricing |
+| 2 | Wallpaper and Flooring, Ingredient Quality |
+| 3 | Business Hours, Theme Cards, Marketing, Fast Casual Dining |
 | 4 | Contracts |
-| 5 | Five-Star Menu Prices, luxury contracts |
-
-Lose a star and what it unlocked stops working until you earn it back.
+| 5 | Five-Star Menu Prices, Luxury Contracts |
 
 ## Reporting a bug
 
