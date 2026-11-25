@@ -1,0 +1,368 @@
+# Purchasing Desk menu layout.
+#
+# How to read / edit this file:
+#   + Name [IconAppliance] {FallbackCategory}   a folder (a tile that opens a page). Indent = nesting (2 spaces).
+#   ApplianceName                                 an appliance tile (KitchenLib ApplianceReferences name).
+#   # ...                                         a comment.
+#
+# - [IconAppliance] is optional: the folder's tile shows that appliance's picture (else its first appliance).
+# - {FallbackCategory} only goes on top-level folders: purchasable appliances this file does not mention
+#   are added to the end of the top-level folder whose fallback category the game's shop tags point to,
+#   so nothing is ever missing. The menu log (TycoonMenuLayout.txt) marks those as "(auto)".
+# - The same appliance may appear in several folders (e.g. Tomato is in every dish that uses it).
+# - Appliances the game doesn't sell are skipped. A folder left with one appliance is dropped and that
+#   appliance shown in the parent instead; an empty folder is dropped.
+# - Inside a page: folders first (in this order), then appliances from cheapest to most expensive.
+
++ Cooking [HobStarting] {Cooking}
+  + Hobs [Hob]
+    HobStarting
+    Hob
+    HobSafe
+    HobDanger
+    ManualHob
+    + Gas [GasLimiter]
+      GasLimiter
+      GasSafetyOverride
+  + Ovens [Oven]
+    Oven
+    DoubleOven
+    Microwave
+  + Mixers [Mixer]
+    Mixer
+    MixerHeated
+    MixerPusher
+    MixerRapid
+  Fryer
+  Cauldron
+  PicklingStation
+
++ Ingredients [SourceFish] {Ingredients}
+  + Coffee [CoffeeMachine]
+    CoffeeMachine
+    IceDispenser
+    SourceCakeStand
+    + Milk [MilkDispenser]
+      MilkDispenser
+      SourceMilk
+    + Tea [SourceTeaPots]
+      SourceTeaBags
+      SourceTeaCups
+      SourceTeaPots
+  + Salad [SourceLettuce]
+    SourceLettuce
+    SourceTomato
+    SourceOnion
+    SourceOlive
+    + Apple Salad [SourceApple]
+      SourceApple
+      SourceNuts
+    SourcePotato
+  + Steak [SourceMeat]
+    SourceMeat
+    SourceThickMeat
+    SourceThinMeat
+    SourceBonedMeat
+    + Steak Sauces [SourceWine]
+      SourceMushroom
+      SourceWine
+    SourceTomato
+  + Burgers [SourceBurgerBuns]
+    SourceBurgerBuns
+    SourceBurgerPatty
+    SourceCheese
+    SourceTomato
+    SourceOnion
+  + Hot Dogs [SourceHotdog]
+    SourceHotdogBun
+    SourceHotdog
+    + Condiments [SourceKetchup]
+      SourceKetchup
+      SourceMustard
+  + Breakfast [SourceEgg]
+    SourceEgg
+    SourceBeans
+    SourceMushroom
+    SourceTomato
+  + Stir Fry [SourceRice]
+    SourceRice
+    SourceBroccoli
+    SourceCarrot
+    SourceMushroom
+    SourceBamboo
+    SourceSoySauce
+  + Pies [SourceFlour]
+    SourceFlour
+    SourceMeat
+    SourceMushroom
+    SourceApple
+    SourcePumpkin
+    SourceCherry
+  + Fish [SourceFish]
+    SourceFish
+    SourceFish2
+    SourcePotato
+  + Turkey [SourceTurkey]
+    SourceTurkey
+    SourceCranberry
+  + Pizza [SourceCheese]
+    SourceFlour
+    SourceTomato
+    SourceCheese
+    SourceMushroom
+    SourceOnion
+  + Dumplings [SourceSeaweed]
+    SourceFlour
+    SourceMeat
+    SourceSeaweed
+    SourceSoySauce
+  + Pasta [SourceSpaghetti]
+    SourceSpaghetti
+    SourceMince
+    SourceTomato
+    SourceCheese
+    SourceOnion
+    + Lasagne [SourceLasagneTray]
+      SourceLasagnePastaSheet
+      SourceLasagneTray
+      SourceButter
+  + Tacos [ProviderTacoTray]
+    ProviderTacoTray
+    ProviderTortilla
+    SourceMince
+    SourceLettuce
+    SourceCheese
+    SourceTomato
+    + Guacamole [SourceAvocado]
+      SourceAvocado
+      SourceLime
+    SourceBellPeppers
+    SourceFryingPan
+  + Desserts [SourceIceCream]
+    + Ice Cream [SourceIceCream]
+      SourceIceCream
+    + Sundaes [SourceSundaeGlasses]
+      SourceSundaeGlasses
+      SourceChocolateSyrup
+      SourceStrawberrySyrup
+      SourceStrawberry
+      SourceBananas
+      SourceNuts
+    + Cakes [SourceBigCakeTin]
+      SourceBigCakeTin
+      SourceBrownieTray
+      SourceCookieTray
+      SourceCupcakeTray
+      SourceDoughnutTray
+      SourceChocolate
+      SourceLemon
+      SourceFlour
+      SourceEgg
+      SourceSugar
+      SourceButter
+    SourceCheese
+    SourceCherry
+    SourceChristmasCracker
+  + Starters & Sides [SourceCarrot]
+    + Soups [SourcePumpkin]
+      SourceTomato
+      SourceCarrot
+      SourceBroccoli
+      SourcePumpkin
+      SourceMeat
+    + Sides [SourcePotato]
+      SourcePotato
+      SourceBroccoli
+      SourceCorn
+      SourceOnion
+    SourceMandarin
+    SourceChristmasCracker
+  + Drinks [BeerTap]
+    BeerTap
+    + Wine [WineBarrel]
+      WineBarrel
+      SourceWine
+  + Other Ingredients [SourceOil]
+    SourceOil
+    SourceHam
+    SourcePickle
+
++ Kitchen [Countertop] {Kitchen}
+  + Counters [Countertop]
+    Countertop
+    Workstation
+    PrepStation
+    FrozenPrepStation
+    KneadingStationX
+  + Storage [Freezer]
+    Freezer
+    StorageCupboard
+    Rack
+    SupplyCabinet
+  + Plates & Pots [PlateStack]
+    PlateStack
+    TakeOutPlates
+    SelfCleaningPlateStack
+    PotStack
+    ServingBoardStack
+    WokStack
+  + Tools [SharpKnifeProvider]
+    RollingPinProvider
+    SharpKnifeProvider
+    ProviderMixingBowls
+  + Bins [Bin]
+    Bin
+    BinExpanded
+    BinCompactor
+    BinComposter
+    LeftoversBagStation
+  Portioner
+
++ Dining Room [TableBasicCloth] {DiningRoom}
+  + Tables [TableBasicCloth]
+    OrderingCounter
+    TableBasicCloth
+    TableCheapMetal
+    TableFancyCloth
+    TableLarge
+    TableBar
+    TableSharingCauldron
+    TablePermanentConsumables
+    CoffeeTable
+    Chair
+  + Front Of House [HostStand]
+    HostStand
+    HostStandBookings
+    BookingDesk
+    OrderingTerminal
+    OrderingTerminalFastFood
+    OrderingTerminalSpecialOffers
+    FoodDisplayStand
+    TrayStand
+  + Table Extras [NapkinBox]
+    BreadstickBox
+    CandleBox
+    FlowerPot
+    NapkinBox
+    SharpCutlery
+    SpecialsMenuBox
+    ColouringBookStand
+  + Buffet [BuffetCounter]
+    BuffetCounter
+    BuffetCounterHeated
+    BuffetCounterPrepStation
+
++ Decorations [Plant] {Decorations}
+  + Affordable [AffordableGumballMachine]
+    AffordableBin
+    AffordableGumballMachine
+    AffordableNeonSign1
+    AffordableNeonSign2
+    AffordableRoofLight
+    AffordableStockArt
+    AffordableWetFloorSign
+  + Charming [CosyFireplace]
+    CosyBarrel
+    CosyBookcase
+    CosyDartboard
+    CosyFireplace
+    CosyRug
+    CosyWallLight
+  + Formal [FormalPlant]
+    FormalDogStatue
+    FormalPlant
+    FormalRoofLight
+    FormalStandingLamp
+    FormalVase
+  + Exclusive [FancyChandelier]
+    FancyCandelabra
+    FancyChandelier
+    FancyFlowers
+    FancyGlobe
+    FancyPainting
+    FancyRug
+    FancyStatue
+  + Seasonal [DecorationTree]
+    ChristmasBanner
+    FairyLights
+    DecorationPresents
+    DecorationTinsel
+    DecorationTree
+    DecorationWreath
+    DecorationCandles
+    DecorationPumpkinStack
+    DecorationShelf
+    Cobwebs
+    GhostStatue
+    Pumpkin
+    Skeleton
+    BunnyPoster
+    Lantern
+    FlowerArch
+    FriendsPoster
+    HeartBalloons
+    HeartBunting
+    LoveSign
+  Plant
+  Painting
+  Rug
+  Fountain
+  Piano
+  Balloons
+  BirthdayBanner
+
++ Cleaning [SinkNormal] {Cleaning}
+  + Sinks [SinkNormal]
+    SinkStarting
+    SinkNormal
+    SinkLarge
+    SinkPower
+    SinkSoak
+    DishWasher
+  + Mops [MopBucket]
+    MopBucket
+    MopBucketFast
+    MopBucketLasting
+    RobotMop
+    RobotMopMobile
+    MagicBroomBucket
+    MagicBroom
+  + Floors [FloorBufferStation]
+    FloorBufferStation
+    FloorProtector
+    RobotBuffer
+    RobotBufferMobile
+  ScrubbingBrushProvider
+
++ Automation [Belt] {Automation}
+  + Grabbers [Grabber]
+    Grabber
+    GrabberRotatable
+    GrabberSmart
+  Belt
+  Combiner
+  Teleporter
+  AutoPlater
+  Dumbwaiter
+  LevitationBelt
+  LevitationStation
+
++ Research [BlueprintCabinet] {Research}
+  + Blueprints [BlueprintCabinet]
+    BlueprintCabinet
+    BlueprintCopyDesk
+    BlueprintDiscountDesk
+    BlueprintOrderingDesk
+    BlueprintUpgradeDesk
+  AccountingDesk
+  ClipboardStand
+  EnchantingDesk
+
++ Footwear [ShoeRackTrainers] {Footwear}
+  ShoeRackTrainers
+  ShoeRackWellies
+  ShoeRackWorkBoots
+
++ Miscellaneous [FireExtinguisherHolder] {Miscellaneous}
+  FireExtinguisherHolder
+  ExtraLife

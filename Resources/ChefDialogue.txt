@@ -1,0 +1,117 @@
+# Smokey's lines (the chef cat in the HQ recipe shop, the old trophy room).
+#
+# How to edit (same rules as BankerDialogue.txt):
+#  - One line = one thing Smokey can say. A random one is picked each time, never the same twice in a row.
+#  - Lines go under a [section] heading; the section decides WHEN the line can be said (see below).
+#  - [bought] lines show in the speech bubble above the cat: keep those under 58 characters.
+#    Every other section shows in the dialogue box, which has room for two or three lines of text.
+#  - Lines starting with # are notes like this one and are ignored. Blank lines are ignored too.
+#  - Save the file and rebuild the mod to use your changes.
+#  - {name} in any line becomes Smokey's name (the [name] section).
+#  - {recipe} becomes the recipe's name and {price} its price, in the sections that mention them.
+#
+# Sections:
+#  [name]           the chef's name (one line)
+#  [introduction]   the very first time the company talks to Smokey (one picked)
+#  [tutorial]       the recipe shop tutorial, shown as recipe-style popups the first time someone walks a couple of
+#                   tiles into the shop. NOT random: each line is one page, in this order (at most 10 pages).
+#  [greeting]       when a player talks to Smokey with nothing in their paws
+#  [offer]          a player brings a recipe from the shelves ({recipe}, {price})
+#  [already-bought] a player brings a recipe they already paid for ({recipe})
+#  [already-owned]  a player brings a recipe their restaurant already knows ({recipe})
+#  [too-poor]       the company can't afford the recipe ({recipe}, {price})
+#  [confirm]        the "are you sure?" page ({recipe}, {price})
+#  [bought]         a recipe is sold (speech bubble, short!)
+#  [stop-thief]     someone walks out of the shop with an unpaid recipe; it goes back on its shelf (speech bubble, short!)
+#  [host-only]      a player who is not the host talks to Smokey (only the host can buy recipes)
+
+[name]
+Smokey
+
+[introduction]
+Hey! Paws off the soup! Oh, you are the new humans. I am {name}. I write the recipes, you cook them, everybody eats, nobody asks what the secret ingredient is.
+Welcome to my kitchen library! I am {name}. I have been cooking since before I had whiskers. Okay, I always had whiskers, but I used to cook with less of them.
+Greetings, tall hairless apprentices! I am {name}. Every recipe here is a sacred family secret. Do not tell my grandmother I am selling them to you for coins.
+Hello! I am {name}, Head Chef and Master of the Sizzling Pans. I would shake your hand, but I am currently covered in flour and ambition.
+You! Yes, you! Stop staring at my hat and look at these recipes! I am {name}. I will teach you how to turn raw ingredients into edible gold. Or at least edible bronze.
+
+[tutorial]
+Welcome to the Recipe Shop! I am {name}. Every dusty piece of paper on these shelves can be added to your restaurant's menu!
+Just pick up a recipe from a shelf and waddle it over to my counter. I will stare at it, do some imaginary math, and tell you what it costs.
+Pay with the company wallet and it is yours! Try to walk out without paying and the recipe magically teleports back to the shelf. I have psychic chef powers.
+Once you pay, put the recipe on one of the carts in the loading bay. It will ride along to your restaurant like a little paper passenger!
+In your restaurant, the recipe waits at the Management Desk. Switch it on to add it to the menu, but only after you buy the right equipment to cook it!
+Opening a new restaurant? A main dish from my shelves can be its star! Put it on the recipe pedestal in the office, next to a site from that banker on the drawing board.
+The shelves change every day, so come back often! Now, paws off the floor-spaghetti!
+
+[greeting]
+Back again? The shelves are stocked, the prices are fair, and the fish is MINE. Do not even look at the fish.
+Smell that? That is the smell of culinary perfection. And slightly burnt toast. Mostly perfection.
+Every recipe on these shelves was tested by a professional. The professional is me. I am very full and need a nap, but business calls!
+You look hungry for success. Or for lasagna. I cannot tell the difference anymore.
+New day, new recipes! I rotate the shelves so nobody gets bored. Also because I knocked half of them down while chasing a moth.
+Do you humans really eat food without licking it first? How do you know it is yours?
+I tried to make a soup out of yarn yesterday. The texture was incredible, but it kept escaping the bowl.
+Mr. Meowser down the hall thinks money is the most important thing in the world. Has he ever tasted a perfectly aged slice of pepperoni? Fool.
+Welcome to my domain! Please ignore the claw marks on the ceiling. The soufflé got a little out of hand.
+I am legally required to tell you that none of these recipes contain actual mouse. Except the one labeled Mouse Surprise. That one is a surprise.
+I sleep in a giant mixing bowl. It is great for my posture, and I wake up smelling like vanilla extract!
+Do you need cooking advice? The secret to every dish is dropping a single hair in it to mark your territory.
+I was going to invent a new cake today, but the sun beam hit the floor at the perfect angle and I was incapacitated for four hours.
+
+[offer]
+Ah, {recipe}! A classic. That one is {price} coins, and worth every single whisker on my face.
+{recipe}, eh? Good choice. My grandmother's recipe. Well, I stole it from her. {price} coins!
+You have excellent taste. {recipe} will cost you {price} coins. No refunds, no substitutions, no dogs allowed.
+{recipe}! I invented that one in a fever dream. Probably. {price} coins and the dream is yours.
+Ooh, {recipe}! For {price} coins, I will let you take it. Just promise me you will not burn it.
+{recipe} is a masterpiece of modern cuisine. {price} coins, please. I need the money to buy premium tuna.
+Ah yes, {recipe}. The dish that made me cry. Or maybe I was just chopping onions. {price} coins!
+For {price} coins, {recipe} will change your life. Or at least change your menu.
+
+[already-bought]
+That {recipe} is already yours! Put it on a cart in the loading bay so it can ride to your restaurant!
+You already paid for {recipe}. I do not charge twice! Usually! Take it to the loading bay!
+Why are you trying to buy {recipe} again? Is your memory as short as a goldfish? A delicious goldfish...
+Put that {recipe} on the cart! Unless you want to eat the paper right here, which I do not recommend.
+
+[already-owned]
+Your restaurant already knows how to make {recipe}. Put it back on the shelf, I have a very specific chaotic system!
+You already have {recipe} in your kitchen! Try something new! Live on the culinary edge!
+Do not be boring! You already serve {recipe}! Put it back and pick something spicy!
+
+[too-poor]
+{recipe} is {price} coins and your wallet is crying. Come back when it stops crying.
+I would love to sell you {recipe}, but {price} coins is {price} coins. Ask the banker down the hall!
+You do not have {price} coins for {recipe}! You are broke! Go chop some carrots and make some money!
+I cannot accept lint and a half-eaten button for {recipe}. I need {price} actual coins!
+
+[confirm]
+{recipe} for {price} coins. Deal?
+So, {recipe} for {price} coins. Shake on it? Paw on it?
+Are you ready to exchange {price} shiny coins for {recipe}?
+{recipe} will cost {price} coins. Do you accept this culinary contract?
+
+[bought]
+Pleasure doing business! Mind the hot pans.
+Sold! Take it to the loading bay.
+Cook it with love. And butter. Lots of butter.
+Another satisfied customer! Meow.
+A glorious transaction! Do not burn it!
+My tuna fund grows! Enjoy the recipe!
+Delicious! Take it to the cart before I eat it!
+Sold to the hairless chef!
+
+[stop-thief]
+HEY! Pay for that first!
+Nice try. Recipes stay here until paid for.
+Not so fast! That recipe isn't yours yet.
+I saw that! Back on the shelf it goes.
+Thief! My psychic chef powers return it!
+Put the coins down or the paper stays!
+You cannot outrun my anti-theft spells!
+Stop right there, criminal scum!
+[host-only]
+Ooh, a guest chef! I can only sell recipes to the host. Send them over, I'll be here with my spoon.
+Sorry, only the host can buy from me. Company rules. And my rules. Mostly my rules.
+You can look, but the host has to do the buying. Grab them! I'll keep the shelves warm.

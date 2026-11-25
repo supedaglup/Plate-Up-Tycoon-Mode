@@ -1,0 +1,48 @@
+## Project-specific
+_reference_src/
+tools/public_summaries_report.txt
+lib/*
+!lib/README.md
+
+## Visual Studio / .NET
+.vs/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/settings.json
+!.vscode/extensions.json
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.swp
+*.DotSettings.user
+_ReSharper*/
+*.log
+TestResult*/
+.idea/
+
+## Unity
+[Ll]ibrary/
+[Tt]emp/
+[Ll]ogs/
+[Bb]uild/
+[Bb]uilds/
+UserSettings/
+MemoryCaptures/
+*.pidb
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+sysinfo.txt
+*.apk
+*.unitypackage
+crashlytics-build.properties
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Python
+__pycache__/

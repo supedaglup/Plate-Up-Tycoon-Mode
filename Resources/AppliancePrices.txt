@@ -1,0 +1,217 @@
+# Tycoon Mode appliance prices (Purchasing Desk), in coins.
+#
+# How to edit:
+#  - One line per appliance:   Name = price
+#  - The name must match the appliance's name exactly as the Purchasing Desk shows it (capital letters too).
+#  - Lines starting with # are notes and are ignored. Blank lines are ignored too.
+#  - An appliance not listed here gets a price from its type (see TycoonPricing.cs): ingredient crates stay cheap,
+#    everything else costs more than in the normal game.
+#  - Save the file and rebuild the mod (Ctrl+Shift+B in VS Code) to use your changes.
+#  - Every price in use is written to TycoonPrices.txt next to Player.log, marked "list" or "formula".
+#
+# How the numbers were chosen (2026-11-04):
+#  - Money scale: a coffee sells for about 1-2 coins (more at a table, less as take-out), so a small coffee shop
+#    takes roughly 25-40 coins a day before its bill.
+#  - Long-term equipment (hobs, ovens, fridges, sinks, machines) is the big investment: weeks of takings, bought
+#    with a loan. Coffee is simple to serve (no plates, no washing up), so its machines cost more up front.
+#  - Ingredient crates are supplies: cheap early on, but they still matter later.
+#  - Upgrades cost several times their basic version; automation is for rich restaurants.
+
+# ---- Coffee and drinks ----
+Coffee Machine = 250
+Milk Steamer = 180
+Ice Dispenser = 150
+Tea pots = 60
+Tea cups = 20
+
+# ---- Cooking (long-term equipment) ----
+Hob = 150
+Danger Hob = 350
+Safety Hob = 350
+# Oven: still burns food (opening it only pauses the cooking), so only a little above the Hob (was 300).
+Oven = 180
+Microwave = 600
+Workstation = 200
+Gas Limiter = 120
+Gas Override = 120
+Pot Stack = 40
+Mixing Bowls = 40
+Taco Trays = 60
+Woks = 80
+Frying Pans = 60
+Cake Tin = 40
+Sharp Knife = 60
+Rolling Pin = 30
+Serving Boards = 40
+Plates = 50
+Disposable Plates = 60
+
+# ---- Ingredients (supplies) ----
+# Cheap enough early on, no longer trivial mid-to-late game.
+Milk = 30
+Sugar = 24
+Tea bags = 30
+Chocolate Syrup = 45
+Strawberry Syrup = 45
+Ice Cream = 60
+Sundae Glasses = 45
+Cupcake Stand = 75
+Meat = 60
+Thin cut meat = 60
+Thick cut meat = 75
+Bone-in Meat = 75
+Mince = 45
+Ham = 60
+Turkey = 90
+Hot Dogs = 45
+Hot dog bun = 30
+Burger Buns = 30
+Cheese = 45
+Eggs = 36
+Flour = 30
+Butter = 36
+Oil = 36
+Rice = 30
+Spaghetti = 30
+Pasta Sheet = 36
+Lasagne Tray = 45
+Tortillas = 36
+Beans = 30
+Potato = 30
+Tomato = 30
+Lettuce = 30
+Onion = 24
+Carrots = 24
+Broccoli = 30
+Corn = 30
+Bell Peppers = 36
+Mushrooms = 36
+Avocado = 45
+Olives = 45
+Pickle = 30
+Pumpkin = 45
+Seaweed = 45
+Bamboo = 45
+Apples = 36
+Cherries = 45
+Cranberry = 45
+Limes = 36
+Mandarins = 36
+Strawberries = 45
+Nuts = 45
+Wine = 90
+Extra Ketchup = 30
+Extra Mustard = 30
+Extra Soy Sauce = 30
+Christmas Crackers = 60
+Brownie Tray = 90
+Cookie Tray = 90
+Cupcake Tray = 90
+Doughnut Tray = 90
+
+# ---- Kitchen ----
+Counter = 30
+Freezer = 200
+Prep Station = 60
+Frozen Prep Station = 250
+Bin = 30
+Expanded Bin = 120
+Compactor Bin = 150
+Composter Bin = 150
+Fire Extinguisher = 50
+
+# ---- Cleaning ----
+Sink = 100
+Dish Rack = 40
+Soaking Sink = 220
+Wash Basin = 250
+Power Sink = 400
+Dish Washer = 500
+Mop = 30
+Lasting Mop = 150
+Fast Mop = 150
+Robot Mop = 1500
+Floor Buffer = 300
+Robot Buffer = 1200
+Scrubbing Brush = 40
+Kitchen Floor Protector = 60
+
+# ---- Dining room ----
+Ordering Counter = 80
+Dining Table = 50
+Bar Table = 50
+Coffee Table = 70
+Table - Simple Cloth = 100
+Table - Fancy Cloth = 160
+Metal Table = 120
+Hosting Stand = 150
+Ordering Terminal = 200
+Specials Terminal = 300
+"Specials" Menu = 80
+Clipboard Stand = 80
+Tray Stand = 80
+Buffet = 250
+Buffet - Platter = 450
+Buffet - Heated = 450
+Display Stand = 200
+Napkins = 60
+Sharp Cutlery = 80
+Candle Box = 60
+Flower Pot = 60
+Breadsticks = 40
+Leftover Bags = 60
+Supplies = 80
+Auto Plater = 300
+
+# ---- Shoes ----
+Trainers = 100
+Work Boots = 100
+Wellies = 100
+
+# ---- Automation (for rich restaurants) ----
+Conveyor = 150
+Mixer = 300
+Dumbwaiter = 300
+Combiner = 600
+Portioner = 600
+Grabber = 500
+Grabber - Rotating = 800
+Smart Grabber = 900
+Heated Mixer = 700
+Rapid Mixer = 700
+Conveyor Mixer = 900
+Teleporter = 10000
+
+# ---- Research (the game's blueprint system; little use in Tycoon) ----
+Blueprint Cabinet = 80
+Research Desk = 200
+Blueprint Desk = 800
+Discount Desk = 1500
+Copying Desk = 1500
+
+# ---- Decorations (their price also sets the reputation bonus) ----
+Dartboard = 75
+Vase = 75
+Abstract Lamp = 75
+Tidy Plant = 75
+Affordable Bin = 75
+Stock Picture = 75
+Gumball Machine = 75
+Dirty Floor Sign = 75
+Wall Light = 75
+Barrel = 100
+Bookcase = 100
+Brand Mascot = 100
+Candelabra = 100
+Ceiling Light = 100
+Rug = 100
+Painting = 100
+Neon Sign = 100
+Chandelier = 150
+Plant = 150
+Calm Painting = 150
+Indoor fountain = 200
+Classical Globe = 150
+Precious Flower = 150
+Statue = 250
+Fireplace = 300

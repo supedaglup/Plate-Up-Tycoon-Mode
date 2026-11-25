@@ -1,0 +1,109 @@
+# Chubs's lines (the card dealer cat in the HQ Card Market, the office left of Smokey's recipe shop).
+#
+# How to edit (same rules as BankerDialogue.txt and ChefDialogue.txt):
+#  - One line = one thing Chubs can say. A random one is picked each time, never the same twice in a row.
+#  - Lines go under a [section] heading; the section decides WHEN the line can be said (see below).
+#  - [bought] and [stop-thief] lines show in the speech bubble above the cat: keep those under 58 characters.
+#    Every other section shows in the dialogue box, which has room for two or three lines of text.
+#  - Lines starting with # are notes like this one and are ignored. Blank lines are ignored too.
+#  - Save the file and rebuild the mod to use your changes.
+#  - {name} in any line becomes Chubs's name (the [name] section).
+#  - {card} becomes the card's name, {price} its price and {rep} the reputation it adds per customer served,
+#    in the sections that mention them.
+#
+# Sections:
+#  [name]           the dealer's name (one line)
+#  [introduction]   the very first time the company talks to Chubs (one picked)
+#  [tutorial]       the Card Market tutorial, shown as recipe-style popups the first time someone walks a couple of
+#                   tiles into the market. NOT random: each line is one page, in this order (at most 10 pages).
+#  [greeting]       when a player talks to Chubs with nothing in their paws
+#  [offer]          a player brings a card from the pedestals ({card}, {price}, {rep})
+#  [already-bought] a player brings a card they already paid for ({card})
+#  [already-owned]  a player brings a card the company already has ({card})
+#  [too-poor]       the company can't afford the card ({card}, {price})
+#  [confirm]        the "are you sure?" page ({card}, {price}, {rep})
+#  [bought]         a card is sold (speech bubble, short!)
+#  [stop-thief]     someone walks out of the market with an unpaid card; it goes back on its pedestal (speech bubble, short!)
+
+[name]
+Chubs
+
+[introduction]
+Well, well, well. Fresh faces at my table. I am {name}. I deal in chaos. You want more fame? You need more trouble. I sell trouble by the card.
+Psst. Over here. No, down here. I am {name}. I run the underground card market. It is not literally underground, we are on the second floor, but it sounds cooler.
+Ah, the new chefs! {name} is the name, cards are the game. Do not mind the visor, it helps me read your poker face. Which is terrible, by the way. I can see you sweating.
+Pull up a stool, friend. I am {name}. I sell audiences. Picky audiences. Angry audiences. People who want water with no ice. The harder the crowd, the bigger the reputation.
+
+[tutorial]
+Welcome to the Card Market! I am {name}. Every card on these pedestals summons a specific type of chaos into your restaurant.
+Walk up to a pedestal and look closely. It tells you the card's name, its price, and how much reputation it adds for every customer you serve.
+Harder cards give more reputation! Your stars will not climb on their own forever. You need to impress the critics by making your life miserable!
+Pick up a card and bring it to my desk. Pay with the company wallet and it is yours. Walk out without paying and my telekinetic bouncers put it right back.
+Once paid, put the card on a cart in the loading bay. It rides along to your restaurant and waits at the Management Desk, perfectly safe and switched off.
+Switch it on at the Management Desk when you are ready to suffer. Then it adds its reputation bonus to every single customer you serve!
+The pedestals get a fresh deal every day, so come back often! Now go on, the house is waiting, and my soup is getting cold.
+
+[greeting]
+Back at the table? The deck is shuffled and the snacks have been eaten. Mostly by me. Okay, entirely by me.
+Step right up! Every card is a bargain. Some of them are even legal in most states!
+You know what makes a restaurant famous? Suffering. Delicious, profitable suffering. Pick a card and suffer for me!
+I have been dealing cards since I was a kitten. Back then I mostly just knocked them off the table. Now I charge people for it. Growth!
+Smokey says I am a bad influence. Smokey also puts pineapple on fish. Who is the real menace to society here?
+Mr. Meowser keeps asking me to bet on interest rates. I told him I only gamble on sure things. Like what time the can opener runs.
+New day, new deal. I reshuffle every morning. It is the only cardiovascular exercise I get.
+Do not let the green visor fool you. I can see right through you. Also, I can barely see through this visor. It is very dark in here.
+They call me {name} because of my big heart. And my big lunch. And my second, slightly bigger lunch.
+I tried to eat one of the cards once. It tasted like cardboard and bad decisions. I recommend cooking for your customers instead.
+Pick a card, any card! Wait, no, pick the one you want to buy. This is not a magic trick, this is a legitimate business transaction!
+I bet you five coins you are going to buy something today. If you do not, I win. If you do, I also win. This is called a rigged economy.
+Are you going to stare at me all day or are you going to buy some trouble? I have a nap scheduled in fourteen minutes.
+
+[offer]
+{card}, eh? That will run you {price} coins, and it adds {rep} reputation for every customer you serve. A steal!
+Ooh, {card}. Spicy choice. {price} coins and you get +{rep} reputation a serve. Do not come crying to me when the kitchen catches fire.
+{card}! The customers will not know what hit them. Mostly because you will be the one getting hit. {price} coins, +{rep} reputation per serve!
+A fine pick, {card}. The price is {price} coins. The reputation is +{rep} per serve. Snacks for the dealer are sadly not included.
+You have a good eye! {card} for {price} coins. It is worth +{rep} reputation for every customer served. Good luck surviving it!
+Ah, {card}. This one caused three bankruptcies last week. It costs {price} coins and grants +{rep} reputation! What a thrill!
+
+[already-bought]
+That {card} is already yours! Put it on a cart in the loading bay before I eat it!
+You already paid for {card}. I only take your money once. Taking it twice is a completely different game. Loading bay!
+Paid in full, friend. {card} goes on a loading bay cart, not back on my beautiful table.
+Hey, {card} belongs to you now! Put it on the cart! I am running a casino here, not a storage unit!
+
+[already-owned]
+Your company already has {card}. Put it back, I have a very specific system. It is called a pile.
+One {card} is plenty! Trust me, having two of those would just be beautiful, miserable chaos. Put it back.
+You already own {card}. Pick something new! Live dangerously! Stop playing it safe!
+
+[too-poor]
+{card} is {price} coins, and your wallet is lighter than my diet plan. Come back with coins.
+No coins, no cards. {card} costs {price}. Maybe go see the banker? He loves lending. He purrs when people go into debt.
+I would spot you the coins, but I just spent my life savings on a premium tuna tower. {card} is {price} coins!
+You are trying to hustle the hustler! You do not have {price} coins for {card}! Get out of here and go flip some burgers!
+
+[confirm]
+{card} for {price} coins, +{rep} reputation per serve. Deal?
+So, {card} for {price} coins. It gives +{rep} reputation. Shake on it?
+Final call! {price} coins for {card}, grabbing you +{rep} reputation per serve. You in?
+Are you ready to bet {price} coins on {card} for +{rep} reputation per serve?
+
+[bought]
+Pleasure doing business! Good luck out there.
+Sold! Take it to the loading bay.
+The house thanks you! Mind the customers.
+Another deal done! Meow.
+Sold to the chef with the lucky paws!
+Snack fund secured. Enjoy the chaos!
+A winning bet! Take it away!
+The house always wins! And you get a card.
+
+[stop-thief]
+HEY! That card isn't paid for!
+Nice try, card shark. Back it goes.
+No coins, no card! Back on the table.
+I saw that! The house always wins.
+Not so fast! Pay at the desk first.
+Thief! My invisible bouncers got you!
+You cannot bluff me! Put it back!

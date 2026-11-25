@@ -1,0 +1,53 @@
+# Tycoon Mode: Marketing cards (3-star reward, Management Desk -> Marketing).
+#
+# How to edit:
+#  - One line = one card:   Name | Price | Days | Effects | Flavour text
+#  - Price: coins. Days: how many days the campaign runs (it ends at the start of the night it runs out).
+#  - Effects: one or more "kind=value" separated by commas. Kinds:
+#       customers   = more customers a day, in %            (customers=10 -> +10% customers)
+#       rep_serve   = extra reputation for every serve      (rep_serve=0.5)
+#       rep_daily   = reputation added every night          (rep_daily=10)
+#       tips        = extra tip chance, in percentage points (tips=10 -> +10%)
+#       price       = customers pay more for everything, in % (price=5)
+#       patience    = extra seconds of patience in the queue (patience=15)
+#       decay       = less reputation lost every night, in % (decay=20 -> 20% less)
+#  - Lines starting with # are notes. Blank lines are ignored.
+#  - At most 40 cards are used (the first 40). The desk offers 3 random ones each day; a restaurant runs at most 3.
+#  - Save and rebuild the mod to use your changes. Cards already running keep their place in this list, so don't
+#    reorder lines in the middle of a run (add new ones at the end).
+
+Flyers on the Corner          |  60 | 2 | customers=8                         | A stack of photocopied flyers on every lamp post nearby.
+Local Newspaper Ad            | 110 | 3 | customers=10, rep_daily=4           | A quarter-page ad between the crossword and the weather.
+Sandwich Board Sign           |  45 | 3 | customers=5                         | A chalkboard on the pavement with today's special.
+Radio Jingle                  | 220 | 3 | customers=18                        | Thirty catchy seconds on the morning show.
+Billboard on the Highway      | 380 | 4 | customers=22, rep_daily=6           | Your logo, ten metres wide, above the traffic.
+Social Media Influencer       | 300 | 2 | customers=25, rep_serve=0.3         | A food influencer posts a video of your best dish.
+Food Blog Review              | 160 | 3 | rep_serve=0.6                       | A popular blogger writes about the friendly service.
+Loyalty Punch Cards           | 140 | 4 | tips=8, patience=10                 | Buy nine, the tenth is free. Regulars stick around.
+Coupon Book                   | 120 | 3 | customers=15, price=-5              | Ten percent off in the local coupon book: busy, but cheaper.
+Grand Opening Balloons        |  70 | 1 | customers=20                        | Balloons and a ribbon by the door, just for today.
+TV Cooking Segment            | 450 | 3 | customers=20, rep_serve=0.8         | Your chef cooks live on the afternoon show.
+Mascot by the Door            |  90 | 2 | customers=10, tips=5                | Someone in a big fuzzy costume waves at passers-by.
+Charity Bake Sale             | 130 | 2 | rep_daily=12, tips=6                | Half the profits go to the local school.
+Sponsored Little League Team  | 200 | 5 | rep_daily=8                         | Your name on the back of every tiny jersey.
+Premium Menu Design           | 180 | 4 | price=8                             | Heavy card, gold lettering, dishes that sound fancier.
+Customer Satisfaction Survey  | 100 | 3 | decay=20, rep_serve=0.2             | "How did we do?" cards on every tray.
+Free Wi-Fi Sign               |  80 | 4 | patience=15                         | People happily wait longer with a signal.
+Live Music Night              | 260 | 2 | customers=12, tips=12               | A local band plays in the corner.
+Neighbourhood Window Display  |  75 | 3 | customers=6, rep_daily=3            | A cheerful window full of plastic food.
+Food Festival Stall           | 320 | 2 | customers=30                        | A pop-up stall at the town food festival sends crowds your way.
+Celebrity Visit Photo         | 400 | 3 | rep_serve=1, rep_daily=10           | A framed photo of a famous face eating here.
+Happy Hour Promotion          | 150 | 2 | customers=18, price=-8              | Cheaper prices for an hour, and everyone comes.
+Email Newsletter              |  95 | 4 | customers=7, tips=4                 | A weekly email with a recipe and a smiley face.
+Review Site Response Team     | 210 | 4 | decay=35                            | Polite replies to every review, good or bad.
+Gift Card Promotion           | 170 | 3 | customers=12, price=4               | Gift cards at the counter bring in new faces.
+Branded Napkins               |  60 | 5 | rep_serve=0.2                       | Your logo on every napkin.
+Street Team Samples           | 140 | 2 | customers=16                        | Staff hand out free tastes down the street.
+Award Ceremony Entry          | 350 | 4 | rep_daily=15, decay=15              | Shortlisted for "Best New Restaurant".
+Cookbook Signing              | 280 | 2 | rep_serve=0.5, tips=10, customers=8 | Your head chef signs copies of their new cookbook.
+Delivery App Feature          | 240 | 3 | customers=20, price=-4              | Featured on the front page of a delivery app.
+Seasonal Menu Poster          |  85 | 3 | price=4, customers=4                | A colourful poster of the season's specials.
+Customer Referral Bonus       | 190 | 4 | customers=12, rep_daily=4           | Bring a friend, both get a free cookie.
+Hot Air Balloon Banner        | 500 | 2 | customers=35, rep_daily=8           | A balloon with your logo floats over town.
+Food Critic Dinner Invite     | 260 | 3 | rep_serve=0.7, decay=10             | You invite a critic for a private tasting.
+Comfy Waiting Benches         | 120 | 5 | patience=25                         | Cushioned benches by the queue.

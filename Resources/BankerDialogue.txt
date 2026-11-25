@@ -1,0 +1,237 @@
+# The banker's lines (the cat in the hat at the HQ bank).
+#
+# How to edit:
+#  - One line = one thing the banker can say. A random one is picked each time, never the same twice in a row.
+#  - Lines go under a [section] heading; the section decides WHEN the line can be said (see below).
+#  - [loan], [payment] and [plan] lines show in the speech bubble above the cat: keep those under 58 characters.
+#    Every other section shows in the dialogue box, which has room for two or three lines of text.
+#  - Lines starting with # are notes like this one and are ignored. Blank lines are ignored too.
+#  - Save the file and rebuild the mod (Ctrl+Shift+B in VS Code) to use your changes.
+#  - {name} in any line is replaced by the banker's name (the [name] section). His name also heads the dialogue box.
+#
+# Sections:
+#  [name]         the banker's name (one line)
+#  [introduction] the very first time the company talks to the banker (one picked)
+#  [tutorial]     the bank tutorial, shown the first time someone walks into the bank's office.
+#                 NOT random: each line is one page, in this order.
+#  [greeting]     when a player opens the bank menu
+#  [no-loan]      greeting extras when the company owes nothing (mixed in with [greeting])
+#  [in-debt]      greeting extras when a loan is being repaid (mixed in with [greeting])
+#  [loan]         when a loan is agreed (speech bubble)
+#  [payment]      when an extra payment is made (speech bubble)
+#  [plan]         when the repayment plan is changed (speech bubble)
+#  [no-credit]    when the bank can't lend anything right now
+#  [grace]        on the page where a new loan's or lease's plan is picked: no payment for the first {days}
+#                 closings ({days} = TycoonBank.GRACE_DAYS), so the money can go into the restaurant first
+#  [first-loan]   added after "I can lend you N." while the company has never borrowed: its first loan or lease
+#                 comes at half the usual interest (TycoonBank.FIRST_LOAN_RATE_FACTOR)
+#
+# Restaurant sites (a player brings one of the blueprints from behind the banker to his desk):
+#  {setting} = its location, {size} = its floor area in sqm, {price} = its price, {credit} = what the bank would lend.
+#  [site-offer]     the site is for sale to this company ({setting}, {size}, {price})
+#  [site-yours]     the company already bought this one
+#  [site-full]      the company already has as many restaurants as it can run
+#  [site-in-debt]   a loan or lease is still being paid off
+#  [site-no-credit] the company's stars and reputation aren't enough for this site ({price}, {credit})
+#  [site-bought]    bought outright (speech bubble, short!)
+#  [site-leased]    leased (speech bubble, short!)
+#  [stop-thief]     someone walks out of the bank with an unpaid blueprint; it goes back (speech bubble, short!)
+#
+#  [host-only]      a player who is not the host talks to the banker (only the host can do the bank's business)
+
+[name]
+Mr. Meowser
+
+[introduction]
+Oh! Customers. I am {name}. I run this bank. The hat runs me, but we don't talk about that.
+Greetings, tall hairless kittens. I am {name}, CEO of Meowser Financial. Do not ask where the money comes from. It is definitely not from under the fridge.
+Ah, fresh entrepreneurs! I'm {name}. I used to trade salmon futures on Wall Street until I ate the assets. Now I fund restaurants!
+Welcome to the Vault. I am {name}. Please do not pet the teller. Okay, maybe one chin scratch for a 0.5 percent APR reduction.
+Hold on, I'm forging my signature... There. A pristine paw print. I'm {name}! You cook the food, I hoard the shiny round things.
+Oh! You can see me? Usually only people in deep financial desperation can see the Bank Cat. I'm {name}. Let's talk capital!
+Welcome! I am {name}. I acquired this bank in a hostile takeover. And by hostile takeover, I mean I sat on the keyboard until they made me manager.
+Look at you, walking around on two legs like you own the place. I'm {name}. Until you pay off your mortgage, I own your spatulas.
+
+[tutorial]
+Welcome to the Bank! I'd give you a pamphlet, but I shredded them all into a lovely nest. Listen closely instead!
+First: Your company shares ONE big wallet across all your restaurants. You can admire your shiny numbers right here in HQ.
+Second: Borrowing! I only give out one loan at a time. Want bigger loans? Get more stars and reputation! I only back winners, and people who smell like tuna.
+Third: Repayment! You pick how many days to pay me back. Longer plans mean smaller daily bills, but WAY more interest for my shiny pile.
+Good news: I take nothing for your first {days} nights after any loan or lease, so spend it on your restaurant and get cooking! After that, your daily payment gets nibbled right out of every night's bill. You can waddle back here anytime to pay extra or adjust your schedule.
+Fourth: Expansion! Behind me are restaurant blueprints. Look at one to see where it is, how big it is and what it costs. I put out new ones every day.
+Bring a blueprint to my desk to buy it outright, or lease it and pay it off like a loan. No other loans running, and enough stars and reputation, please. Every site comes with the appliances you need to start. Can't have you going out of business!
+Then put the blueprint on the drawing board in the office, with a main recipe from Smokey on the pedestal beside it, and head out through the loading bay. Use the restaurant selector in HQ to pick which restaurant the loading bay takes you to.
+Finally: If you end two nights in a row in debt, your restaurant goes BANKRUPT. Poof! Gone! Like a red dot on a wall! So borrow wisely, okay?
+
+[greeting]
+...Oh. Hello. I was just staring at the ghost of inflation on the ceiling. It is gone for now. What do you need?
+Welcome back to the Bank of Purrsia. Please wipe your paws. I just licked the floor clean. Wait, no, that's disgusting. The janitor did it.
+Ah, my favorite bipedal ATM. Have you come to gaze upon my hat, or do you actually need money?
+Sorry if the desk is messy. I saw a glass of water near the edge and my instincts took over. Financial gravity is a cruel mistress.
+I was just auditing my ledger. And by auditing, I mean batting a pen back and forth until it fell into the radiator.
+Sorry if I am vibrating. That is called purring. My doctor says it is terminal business acumen.
+Do you hear that? That crinkling sound? Someone within four miles just opened a wrapper. Focus, {name}, focus on the stonks...
+I tried to invest in the Red Dot yesterday. Pounced right on it. Turns out it was just a laser pointer held by the SEC.
+My financial advisor is a hairball I coughed up in 2019. He says the market is looking moist and tubular.
+Money doesn't grow on trees, friend. If it did, I would climb the tree, get stuck, and scream until the fire department rescued the economy.
+Did you know I lost four of my nine lives in the Great Yarn Crash of '08? Tangled assets everywhere. It was a bloodbath.
+...Oh, hi. I was just biting a gold coin to see if it was chocolate. Terrible mouthfeel. Needs more tuna.
+Have you met my enemy, The Vacuum? He comes into the office every Tuesday and eats my untaxed floor-pennies. He works for the IRS, I know it.
+Look at my hat. Notice how tall it is? That's where I keep my secrets. And a spare sardine for emergencies.
+If a dog in a trenchcoat comes in here asking about subprime bones, tell him I'm in Switzerland.
+I don't actually know math, you know. I just hiss at the spreadsheet until the numbers turn green.
+Why do you humans cook the fish? You're ruining the texture! This is why I charge you interest. For culinary crimes.
+Sometimes I sit in the vault, which is an Amazon box, and pretend I'm a dragon. A very fuzzy, financially literate dragon.
+Please do not crinkle any receipts near me. My pupils will dilate to the size of dinner plates and I will lose all professional composure.
+The secret to wealth is simple: sleep 18 hours a day so you don't spend any money. You look exhausted. Have you tried curling into a ball?
+I tried to buy a yacht once. Then I remembered water is located all around the yacht. Worst investment of my third life.
+Welcome! The interest rates today are dictated by the alignment of Jupiter and whether or not my tummy is currently rumbling.
+Is that... oregano I smell on you? Or is it the Devil's Lettuce... Catnip? Either way, I'm listening.
+I just got off the phone with the Federal Reserve. Actually, I just unplugged the phone because the cord looked like a snake.
+Every coin in this bank has been personally sniffed by me. Some of them smell like trousers. I don't ask questions.
+You know, before I got into banking, I was a street cat. Then I found this hat in a dumpster behind a Monopoly tournament, and here we are.
+I am slowly pushing these tax forms toward the edge of the desk. Gravity is the ultimate auditor.
+Care for a mint? Wait, no, that's a desiccant packet. Do not eat that. That's for high-tier investors only.
+I'm thinking of diversifying into boxes. Big boxes. Shoeboxes. Those weird cardboard trays that canned sodas come in. The market is wide open.
+Don't tell anyone, but the combination to the vault is just "meow" four times. Good luck getting the inflection right, though.
+
+[no-loan]
+You owe me NOTHING! Honestly, it's a little rude. We barely have a parasitic financial relationship anymore!
+Zero debt? How boring. Live a little! Buy seventeen dishwashers! Take out a second mortgage on a salad bar!
+Your ledger is completely clean. Did you lick it? Because it's spotless. Want to ruin it with some fresh, hot debt?
+A debt-free chef is a chef without fear. And a chef without fear forgets to check the oven. Take a loan! Stay anxious!
+Look at you, walking in here with a zero balance like you own your own kneecaps. Let's get you back in the red where it's cozy.
+No active loans? My cardboard box feels noticeably lighter. My joints ache when the box is light. Fix it!
+Your wallet smells like financial independence. Gross. Let's rub some bank-scent on it.
+You don't owe me a single coin! Which means I have no legal reason to stare through your restaurant window at 3 AM. I will still do it, though.
+Clean slate! You're as free as an indoor cat when someone leaves the screen door unlatched for a split second.
+Not a penny owed. The Hat is displeased. The Hat hungers for compound interest.
+
+[in-debt]
+Ah, my favorite debtor! Don't worry, your loan is safe with me. It's growing bigger and fatter every day, like a tick!
+I can smell my money on you. And garlic. Mostly garlic, actually, which is toxic to me, so please stand three feet back while paying.
+How is my money doing? Is it making friends? I expect it to return with a whole litter of baby coins.
+Remember, if you miss two nights of payments, I legally get to push your entire restaurant off the edge of the table.
+My little sign says zero days since the last bankruptcy. I haven't updated it since 1997, but still.
+Tick tock, little chef! The interest clock is purring. Well, ticking. Wait, why is my desk ticking?
+You still owe the bank! Don't make me puff up my tail to look twice as big! I will do it! I am an enforcer!
+Every coin you owe me is another minute I spend sitting on your warm laptop while you try to do your accounting.
+Your debt is maturing nicely. Like a fine saucer of cream left behind the sofa for three weeks.
+Just checking on my investment! You still have both kidneys and a working stove, yes? Wonderful.
+
+[first-loan]
+Since it's your first loan with me, I'll give you a special rate. Half the usual interest. Don't tell the other cats.
+First loan with Meowser Financial? Then you get the new-customer rate: half the interest! My heart is soft. Like my belly.
+Your first loan gets my friendly rate, half the usual interest. Consider it a welcome purr. The next one bites.
+A first-time borrower! I shall be gentle. Half the interest on this one. After that, the claws come out.
+
+[grace]
+I take nothing for your first {days} nights. Spend it, open up, get cooking! A little extra interest covers my nap time.
+Your first {days} nights are payment-free. Fill that kitchen! My interest naps through it, mostly.
+No payments for {days} nights, so put every coin into the restaurant. I'll be waiting. Purring. Ominously.
+
+[loan]
+Approved! I stamped it with my back foot.
+Money granted! Don't spend it all on laser pointers.
+Enjoy the cash! It's slightly damp. Sorry.
+A wise choice! The Hat approves this transaction.
+Cha-ching! Or as my people say: Eek-eek-chatter.
+Here you go! Fresh from under the sofa cushions.
+Signed and sealed! You belong to the kitty now.
+Take it! Go buy a golden mop or whatever!
+Loan deployed! Please return it with coin-kittens.
+Pleasure doing business! I am purring very aggressively.
+Careful, that bag is 40% coins and 60% loose fur.
+Deal! No take-backsies. That's a legal banking term.
+Boom! Funded! I feel like a tiny, furry god!
+Spend it wisely! Or recklessly! I get paid anyway!
+Your credit score just purred. Here's the loot!
+
+[payment]
+Ooh, warm coins! Right into the sitting-pile.
+Delicious liquidity! Almost as good as wet food.
+A payment! You get one slow blink of respect.
+Nom nom nom. That's the sound of your debt shrinking.
+The box grows heavier! My throne ascends!
+Paid! I shall refrain from scratching your ankles today.
+Thank you! I'll bury this in the litterbox for safety.
+Early payment? Show-off. Do it again.
+Look at you, being responsible! Disgusting. I love it.
+Ah, revenue. Smells like burnt cheese.
+One step closer to freedom! You will be back.
+The Hat tips itself in your general direction.
+Shiny! I'm going to roll around in this later.
+Debt reduced! My respect for you increased by two percent!
+Clink clink! My second favorite sound after a can opener.
+
+[plan]
+Rearranging the yarn ball, are we? Fine by me.
+New plan! I shuffled the papers with my claws.
+Stretching it out? Long like a cat in a sunbeam!
+Shorter plan? Bold! Spicy! Like biting tin foil!
+Math adjusted! I just drew a fish on the graph.
+Plan updated! The house always lands on its feet.
+Ooh, strategic! Look at the big-brain primate go!
+Time is money, and I sleep through 75 percent of time.
+Changing the terms? I charge a zero-coin fee for that.
+Schedule shifted! My abacus is purring.
+Flexible! Like my spine when I'm in a shoebox.
+Recalculating... Beep boop. Meow. Done!
+A fresh timetable! Smells like optimism.
+Adjusting the dial! Try not to go broke, okay?
+
+[no-credit]
+No can do. My paw is firmly on the vault lid.
+You want MORE? You haven't even finished your first bowl!
+The Hat says no. Don't look at me, I just work here.
+Your credit is flatter than a mouse under a fridge.
+Come back with more stars! I only fund fancy places.
+Pay your current tab first, you greedy little goblin!
+Hiss! Sorry, reflex. That's banking speak for "Denied."
+The vault is asleep. Try again when you're famous.
+I'm a cat, not a charity! Get some stars first!
+Computer says Meow-nope. Also, there is no computer.
+Even if I wanted to, I lost the vault key in my fur.
+Insufficient clout! Go cook some more pies, kid.
+My whiskers are twitching. That means "High Risk."
+One loan at a time! I only have so many toes to count on.
+
+[site-offer]
+Ah, a fine {setting} property! {size} square meters of opportunity for {price} coins. It comes with everything you need to open, of course.
+This {setting} site is {size} sqm and costs {price} coins. Appliances to get started are included. I can't have you going under on day one!
+{size} sqm in {setting}! Great foot traffic. Mostly pigeons. {price} coins, starter appliances thrown in.
+Oh, this one has charm. {setting}, {size} sqm, {price} coins. The previous owner left a fridge. And possibly a ghost.
+
+[site-yours]
+That site is already yours! Put it on the drawing board in the office with a main recipe from Smokey, then head out through the loading bay.
+You already own that one. Don't make me count it twice, my toes are tired. The drawing board is in the office!
+
+[site-full]
+Five restaurants? Already? Even I can't keep track of that many paws in that many pies. That's the most I'll back.
+
+[site-in-debt]
+Pay off your current loan or lease first. One debt at a time, or the Hat gets nervous.
+You're still paying me back! Finish that, then we'll talk real estate.
+
+[site-no-credit]
+{price} coins is a lot of fish, and your restaurants are only good for {credit} with me. More stars and reputation, please!
+Your credit is {credit} coins and this site costs {price}. Come back when the critics love you more.
+
+[site-bought]
+Sold! The keys are under the doormat. Probably.
+Bought outright! The Hat is impressed.
+A property tycoon in the making! Purr.
+
+[site-leased]
+Leased! I'll take my share every night.
+Signed! Don't miss a payment, I bite.
+Lease approved! Welcome to the landlord club.
+
+[stop-thief]
+HEY! That blueprint isn't paid for!
+Put that back! The bank owns that deed!
+Nice try. Blueprints stay here until they're paid for.
+[host-only]
+Ah, a visitor! I only talk money with the boss of this company. Ask your host to come and see me.
+Sorry, friend. My vault only opens for the host. I don't make the rules. Well, I do. And that's the rule.
+Paws off the paperwork! Loans and properties go through your host. I'll be here, guarding the shiny pile.

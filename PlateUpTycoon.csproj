@@ -1,0 +1,148 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>9.0</LangVersion>
+    <AssemblyName>PlateUpTycoon</AssemblyName>
+    <RootNamespace>PlateUpTycoon</RootNamespace>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    <!-- Mod metadata (edit freely) -->
+    <Version>0.1.0</Version>
+    <Product>PlateUp! Tycoon Mode</Product>
+    <Authors>supedaglup</Authors>
+
+    <!-- Where PlateUp.exe lives. Change this if your Steam library is somewhere else. -->
+    <PlateUpGameFolder>C:\Program Files (x86)\Steam\steamapps\common\PlateUp\PlateUp</PlateUpGameFolder>
+    <ModInstallFolder>$(PlateUpGameFolder)\Mods\PlateUpTycoon\content</ModInstallFolder>
+    <!-- Steam Workshop folder for PlateUp (app 1599600). HarmonyX (2898033283) is read from here. -->
+    <PlateUpWorkshopFolder>$(PlateUpGameFolder)\..\..\..\workshop\content\1599600</PlateUpWorkshopFolder>
+  </PropertyGroup>
+
+  <!-- Game / modding DLLs. Place copies in the 'lib' folder (see lib/README.md). -->
+  <ItemGroup>
+    <Reference Include="Kitchen.Common">
+      <HintPath>lib\Kitchen.Common.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- Kitchen.GameData also contains the KitchenData namespace -->
+    <Reference Include="Kitchen.GameData">
+      <HintPath>lib\Kitchen.GameData.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Kitchen.RestaurantMode">
+      <HintPath>lib\Kitchen.RestaurantMode.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Kitchen.FranchiseMode">
+      <HintPath>lib\Kitchen.FranchiseMode.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Kitchen.Layouts">
+      <HintPath>lib\Kitchen.Layouts.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <!-- The game-over newspaper (Patches/BankruptcyNewspaperPatch.cs) -->
+    <Reference Include="Kitchen.PostgameMode">
+      <HintPath>lib\Kitchen.PostgameMode.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Kitchen.Persistence">
+      <HintPath>lib\Kitchen.Persistence.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="KitchenMode">
+      <HintPath>lib\KitchenMode.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="KitchenMods">
+      <HintPath>lib\KitchenMods.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="KitchenLib-Workshop">
+      <HintPath>lib\KitchenLib-Workshop.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Entities">
+      <HintPath>lib\Unity.Entities.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>lib\Unity.Collections.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>lib\Unity.Mathematics.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>lib\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Sirenix.Serialization: base class of the game's data objects. Read straight from the game install so
+       code that compares or casts game data objects compiles. Not shipped with the mod. -->
+  <ItemGroup Condition="Exists('$(PlateUpGameFolder)\PlateUp_Data\Managed\Sirenix.Serialization.dll')">
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>$(PlateUpGameFolder)\PlateUp_Data\Managed\Sirenix.Serialization.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Harmony (patching library) comes from the HarmonyX Workshop mod, or lib\0Harmony.dll if you copy it there. -->
+  <ItemGroup Condition="Exists('lib\0Harmony.dll')">
+    <Reference Include="0Harmony">
+      <HintPath>lib\0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition="!Exists('lib\0Harmony.dll')">
+    <Reference Include="$(PlateUpWorkshopFolder)\2898033283\**\0Harmony.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!-- Lets the free .NET SDK (and VS Code) build .NET Framework 4.7.2 without full Visual Studio -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <!-- Purchasing Desk menu layout, built into the DLL (read by TycoonMenuLayout.cs) -->
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PurchasingDeskMenu.txt" LogicalName="PlateUpTycoon.PurchasingDeskMenu.txt" />
+    <!-- The banker's lines (read by TycoonBankerDialogue.cs) -->
+    <EmbeddedResource Include="Resources\BankerDialogue.txt" LogicalName="PlateUpTycoon.BankerDialogue.txt" />
+    <EmbeddedResource Include="Resources\ChefDialogue.txt" LogicalName="PlateUpTycoon.ChefDialogue.txt" />
+    <EmbeddedResource Include="Resources\CardDialogue.txt" LogicalName="PlateUpTycoon.CardDialogue.txt" />
+    <EmbeddedResource Include="Resources\DiscountDialogue.txt" LogicalName="PlateUpTycoon.DiscountDialogue.txt" />
+    <!-- Appliance prices (read by TycoonPricing.cs) -->
+    <EmbeddedResource Include="Resources\AppliancePrices.txt" LogicalName="PlateUpTycoon.AppliancePrices.txt" />
+    <!-- Marketing cards and Contracts (read by TycoonPromotions.cs) -->
+    <EmbeddedResource Include="Resources\MarketingCards.txt" LogicalName="PlateUpTycoon.MarketingCards.txt" />
+    <EmbeddedResource Include="Resources\Contracts.txt" LogicalName="PlateUpTycoon.Contracts.txt" />
+    <EmbeddedResource Include="Resources\TycoonGuide.txt" LogicalName="PlateUpTycoon.TycoonGuide.txt" />
+    <EmbeddedResource Include="Resources\CustomerCards.txt" LogicalName="PlateUpTycoon.CustomerCards.txt" />
+  </ItemGroup>
+
+  <!-- Keep reference sources and lib out of the compile -->
+  <ItemGroup>
+    <Compile Remove="_reference_src\**" />
+    <Compile Remove="lib\**" />
+    <None Remove="_reference_src\**" />
+  </ItemGroup>
+
+  <!-- After a successful build, copy the mod into PlateUp's local Mods folder so it loads next launch. -->
+  <Target Name="InstallIntoPlateUp" AfterTargets="Build">
+    <Copy Condition="Exists('$(PlateUpGameFolder)')" SourceFiles="$(TargetPath)" DestinationFolder="$(ModInstallFolder)" />
+    <Message Condition="Exists('$(PlateUpGameFolder)')" Importance="high" Text="Installed mod to $(ModInstallFolder)" />
+    <Warning Condition="!Exists('$(PlateUpGameFolder)')" Text="PlateUp folder not found at '$(PlateUpGameFolder)'. Edit PlateUpGameFolder in PlateUpTycoon.csproj, or copy bin\Release\PlateUpTycoon.dll by hand." />
+  </Target>
+
+</Project>

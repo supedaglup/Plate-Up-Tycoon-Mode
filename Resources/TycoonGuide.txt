@@ -1,0 +1,51 @@
+# Tycoon Mode guide pages (shown with the game's recipe pop-up). Edit freely, then rebuild the mod.
+#
+# !!! KEEP THIS FILE UP TO DATE: every time a Tycoon feature is added or changed, update the page that covers it. !!!
+#
+# Sections (each shown once per Tycoon save, if "Tycoon guide pop-ups" is on in Mod Preferences):
+#   [hq]    the first arrival in HQ. Only the big picture: never repeat what Mr. Meowser, Smokey or Chubs
+#           explain in their own tutorials (bank, loans, sites, wallet, bankruptcy, recipe shop, card market,
+#           Whiskers's discount appliances).
+#   [star0] the first night in a restaurant: what is unique to Tycoon in a restaurant.
+#   [star1] .. [star5] the first night after the restaurant reaches that many stars: what that star unlocked.
+# Format: "[section] Title" starts a section; then one line = one page (at most 8 pages per section).
+# Lines starting with # are notes.
+
+[hq] Welcome to Tycoon Mode
+Tycoon Mode turns PlateUp! into one long business. Unlike the regular game, it is designed to be a restaurant management simulator that offers a more long-form gameplay loop.
+This mod features a new HQ, with a the recipe shop, the card market and a little discount appliance shop at the top of the garage, and each of the cat owners explains their part the first time you visit.
+Good service earns your restaurant reputation, and enough reputation brings a food critic who can award a star. Every new star unlocks something new, so work hard to earn those stars!
+A lot more of the features will be explained as they are unlocked to you, so don't worry if you are overwhelmed by all of the new features.
+Your first restaurant awaits, just proceed to the loading bay when you are ready.
+
+[star0] Running Your Restaurant
+At the end of each day, your overhead costs are totalled up: utilities and upkeep for your appliances, restocking (every Disposable Plate used counts too), licences, and cleaning for any mess or full bins left when the day ends. When friends work with you, each of them draws a paycheck too, which grows with your stars and with how much the day brought in. The ledger each night shows where your money went, and the Reputation Report after it shows where your reputation came from.
+Fast, happy service earns reputation, and how your restaurant looks matters: the furniture, wallpaper and flooring customers can see set its ambience, which raises or lowers the reputation every serve earns. Slow service, walkouts and mess lose it, and some fades every night. Every mess on the floor takes a bite out of each serve, and the bite grows with your stars, so keep cleaning during the day. The wet floor the mop leaves behind costs nothing at closing and the inspector ignores it, though customers mind it a little. Mess and trash left at closing cost more to clean the bigger your reputation. If the health inspector spots a mess or a full bin, clean it right away: dealt with in the next few seconds, it doesn't count. After each day, the Reputation Report shows exactly where your reputation came from and where it went.
+A new feature of Tycoon mode is the Purchasing Desk, the standard way of receiving new appliances. You can purchase items during the Setup or Service phase, however the items won't arrive until the next day. Appliance prices follow how much your company has earned over the last few days, so they are cheaper while business is slow.
+Another new feature of Tycoon mode is the introduction of the Management Desk, whose abilities will upgrade as you continue to gain stars. In online games, only the host can use it. 
+It's first ability is the Card Manager, which allows switches your cards on and off: recipes, add-ons, and customer cards bought at HQ. A card that brings bigger groups only earns its full reputation once a table can seat its biggest groups; until then its tag shows how much it earns. 
+All restaurants have the option to enable the new Take-Out card, which changes the restaurant to a fast food style restaurant. Customers now order at the Ordering Counter and leave with their food, so don't need tables while it is enabled. However, you gain less coins and reputation with this card on. Disposable Plates work in every recipe and need no washing up (a rack of them means a restaurant needs no sink), but each one used is paid for at closing and food served on them earns less reputation.
+Every time you serve a dish, you now increase that dish's Recipe Mastery, the system in which you progress the recipe and learn new add-ons, selected through the Card Manager window. Harder dishes, add-ons you have switched on and a busy kitchen all speed it up, starters and desserts count towards your main dishes, and recipes you rarely get to serve catch up a little each night. Customers who order more than one course pay more for every extra course. A bigger, harder menu keeps your kitchen busier: fewer customers come, but each pays more. Every main dish you add on top of your first one brings a lot fewer customers, who each pay a lot more. In the Card Manager, the tag on each switched-on recipe card shows how many fewer customers it brings. Automation appliances and extra players lighten the load. Serve a big crowd from a big menu almost perfectly and you earn a Full House bonus at closing.
+
+[star1] 1 Star: Upgraded Appliances and Dish Pricing
+You earned your first star! The Upgraded Appliances card is in your Card Manager: the Purchasing Desk now sells the upgraded versions of appliances.
+The Dish Pricing card lets you set your prices at the Management Desk. Dearer dishes bring in more coins, but every customer gives you less reputation, and a greedy restaurant can lose reputation every night until it loses a star. Cheaper dishes bring in fewer coins but more reputation, though customers soon get used to a sale: every day in a row at cheaper prices earns a little less extra, and it comes back one day at a time once your prices are normal again. Famous restaurants gain less from a sale, too. The line under your reputation shows what each customer is worth right now.
+Every star brings longer days, more customers and bigger bills, and more reputation fades every night. Between stars, more customers come as your reputation climbs, up to the next star's crowd, but no further until the critic awards that star. Every card that is on adds reputation to each serve, so the higher stars need more cards: around 12 to 16 to reach 5 stars, fewer if most of them are main dishes. If your reputation slips, the next critic can take a star away, along with what it unlocked.
+
+[star2] 2 Stars: Wallpaper, Flooring and Ingredient Quality
+The Ingredient Quality card is in your Card Manager, switched on: choose your ingredients at the Management Desk, from Budget to Gourmet. Better ingredients cost more to restock but earn more reputation, tips and Recipe Mastery; cheaper ones save money. From 3 stars, customers expect better ingredients with every star, and serving below that costs reputation and tips. Switch the card off and you're back on Budget ingredients.
+The Purchasing Desk now sells wallpaper and flooring. Decorating rooms your customers can see earns reputation every day, and fancier decor earns more. Remember, as your restaurant's star level increases, so does your customer's expectations for decor. Remember to make your restaurant look nice or else you won't be able to keep your reputation growing!
+
+[star3] 3 Stars: Business Hours, Themes and Marketing
+The Business Hours card lets you add an Opening time (to get ready before customers come in) and a Closing time (to clean up before night), from 0 to 15 seconds each. Set them at the Management Desk, under Set Opening and Closing Times.
+The four theme cards are now located in your Card Manager. Only one theme can be on at a time, and theme furniture now counts towards it as well as earning reputation. Theme furniture bought earlier only starts counting towards a theme once that theme's card is on.
+The Management Desk is now upgraded to allow for Marketing! Three campaigns are on offer each day: each costs coins and boosts your restaurant for a few days, with more customers, better tips, extra reputation and more. Up to three can run at once.
+You also now gain the Fast Casual Dining card, complement to the Take-Out card's path: with both on, while all customers order at the Ordering Counter, some will choose to sit down and eat, resulting in better rewards! Cards about eating time or plates, like Picky Eaters and Leisurely Eating, only work while some customers sit down: with Take-Out on, they need Fast Casual Dining on too. A Picky Eater's leftovers on a Disposable Plate go in the bin plate and all.
+
+[star4] 4 Stars: Contracts
+The Management Desk is now upgraded to allow for Contracts. Each day offers a few special groups you can book for the next day. Their arrival is marked in gold on the day bar.
+Serve every guest in the group for a big reward in coins and reputation. If anyone walks out, or is still waiting when the day ends, you lose reputation and may pay a fee. Only one contract can be booked at a time.
+
+[star5] 5 Stars: Top of the Town
+Five stars, the top rating! The Five-Star Menu Prices card is on: every dish costs 25% more, but customers in the queue are a little less patient. Lose the star and the card goes with it.
+Luxury contracts (the gold cards) are now on offer at the Management Desk: galas, celebrity chefs, royal banquets and more. A luxury contract takes over the whole next day: every guest dresses up, pays more and gives more reputation, but walk-outs are limited. Two of each day's four contracts are luxury ones.

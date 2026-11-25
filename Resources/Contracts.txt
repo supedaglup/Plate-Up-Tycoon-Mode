@@ -1,0 +1,59 @@
+# Tycoon Mode: Contracts (4-star reward, Management Desk -> Select Contracts).
+#
+# A contract books a special group for the NEXT day. They arrive at the marked time on the day bar. Serve every one of
+# them and you get the reward; if any of them walks out (or is still waiting when the day ends) the contract fails.
+# Booking takes a deposit (a quarter of the reward coins), given back on success or if the booking is cancelled.
+# A failed contract also takes back every coin and all the reputation its guests earned that day.
+#
+# How to edit:
+#  - One line = one contract:
+#      Name | Arrival | Size | Patience | Reward coins | Reward reputation | Fail reputation | Fail coins | Outfit | Flavour text | Stars
+#  - Arrival: when they arrive, 0 = the start of service, 1 = the end (0.5 = halfway, shown on the day bar).
+#  - Size: how many people (with Take-Out on they queue one by one; every one of them must be served).
+#  - Patience: their queue patience in % of a normal customer's (50 = half as patient).
+#  - Reward / Fail: coins and reputation won when it succeeds, lost when it fails (fail coins are a cancellation fee).
+#  - Outfit: what they wear, KitchenLib PlayerCosmeticReferences names separated by "+" (e.g. TuxChef+GlassesHat),
+#    or "none". Some useful ones: TuxChef, ChefOutfit, WaiterOutfit, ApronOutfit, FirefighterOutfit, PenguinOutfit,
+#    BaseballCap, CowboyHat, CrownHat, PartyConeHat, PirateHat, GlassesHat, VisorHat, TallChefHat, SantaHat, ElfHat.
+#  - Stars (optional, last column): the stars a restaurant needs before it is offered (default 4). 5 = a luxury contract:
+#    at 5 stars two of the day's four offers are luxury contracts.
+#  - Lines starting with # are notes. At most 30 contracts are used (the first 30). The desk offers 4 random ones a day.
+#  - Save and rebuild the mod. Add new contracts at the end (a booked contract keeps its place in this list).
+
+Business Lunch            | 0.30 | 4 | 70  | 220 | 30 | 25 | 40  | TuxChef                  | Four executives on a tight lunch break. Don't keep them waiting.
+Birthday Party            | 0.50 | 6 | 90  | 260 | 35 | 25 | 30  | PartyConeHat             | A noisy birthday crowd in party hats.
+Food Critic Panel         | 0.60 | 3 | 60  | 180 | 60 | 45 | 0   | GlassesHat               | Three critics who write for the big papers.
+Firefighters' Shift Meal  | 0.40 | 5 | 50  | 300 | 25 | 20 | 60  | FirefighterOutfit        | The whole station, between call-outs. They have to be quick.
+Wedding Rehearsal Dinner  | 0.70 | 8 | 100 | 450 | 50 | 40 | 80  | TuxChef                  | The whole bridal party. A big job, a big tip.
+Little League Team        | 0.20 | 7 | 80  | 200 | 20 | 15 | 20  | BaseballCap              | Seven hungry kids after the big game.
+Royal Visit               | 0.55 | 2 | 40  | 350 | 80 | 70 | 50  | CrownHat                 | Visiting royalty. Very important, very impatient.
+Pirate Theme Night        | 0.80 | 5 | 90  | 240 | 30 | 20 | 30  | PirateHat                | A costume club that only says "arr".
+Construction Crew         | 0.25 | 6 | 60  | 280 | 20 | 15 | 40  | VisorHat                 | The site next door, all on one lunch break.
+Rodeo Riders              | 0.65 | 4 | 80  | 210 | 25 | 20 | 25  | CowboyHat                | In town for the weekend show.
+Chef's Convention         | 0.45 | 5 | 70  | 320 | 45 | 35 | 50  | TallChefHat              | Professional chefs. They will notice everything.
+Penguin Charity Walk      | 0.35 | 6 | 100 | 190 | 40 | 15 | 10  | PenguinOutfit            | Charity walkers in penguin suits.
+Holiday Office Party      | 0.75 | 8 | 80  | 400 | 35 | 30 | 70  | SantaHat                 | The whole office, in festive hats.
+Waiters' Union Lunch      | 0.50 | 4 | 60  | 230 | 40 | 30 | 30  | WaiterOutfit             | Other waiters. They know good service when they see it.
+Bakers' Guild Tasting     | 0.30 | 3 | 90  | 150 | 35 | 20 | 15  | BakerChef                | Three master bakers on a tasting tour.
+Midnight Elves            | 0.90 | 5 | 70  | 260 | 30 | 25 | 35  | ElfHat                   | A late booking from the toy workshop's night shift.
+
+# ---- Luxury contracts (5 stars) ----
+# A luxury contract is the WHOLE DAY: every guest that day comes dressed for it, pays more and gives more reputation
+# (TycoonPromotions.LUXURY_PAY_BONUS / LUXURY_REP_PER_SERVE), with Patience % for everyone's queue patience.
+# Keep walkouts to the limit in the Size column for the whole day to get the reward at night; one more and it fails
+# at once. Arrival is not used for luxury contracts.
+# A luxury contract's deposit is bigger (40% of the reward coins), and if the day fails it also takes back all the extra
+# pay and reputation the VIP guests gave that day.
+#   Name | Arrival | Walkouts allowed | Patience | Reward coins | Reward reputation | Fail reputation | Fail coins | Outfit | Flavour | 5
+Gala Night                | 0 | 2 | 90  | 2200 | 280 | 160 | 300 | TuxChef+CrownHat         | A black-tie gala all night long. Every guest is somebody, and they all know it. | 5
+Celebrity Chef Visit      | 0 | 1 | 80  | 2000 | 350 | 200 | 250 | TuxChef+TallChefHat      | A world-famous chef brings their whole fan club for a day of tasting YOUR cooking. | 5
+Royal Wedding Banquet     | 0 | 1 | 100 | 2800 | 320 | 220 | 450 | TuxChef+CrownHat         | The wedding of the year takes over your restaurant for the day. Zero room for mistakes. | 5
+Film Premiere Afterparty  | 0 | 3 | 75  | 2000 | 240 | 150 | 250 | TuxChef+StarTopperHat    | The cast and crew celebrate all day. Red carpet manners, empty stomachs. | 5
+Golden Guide Inspectors   | 0 | 0 | 85  | 1600 | 400 | 260 | 0   | TuxChef+GlassesHat       | The famous food guide sends inspectors in disguise all day. Not one guest may leave unhappy. | 5
+Billionaire's Birthday    | 0 | 2 | 70  | 2600 | 220 | 160 | 350 | TuxChef+PartyCandleHat   | A billionaire rents out the whole day for their birthday. Money is no object. Patience is. | 5
+Ambassadors' Summit       | 0 | 2 | 75  | 2100 | 260 | 180 | 300 | TuxChef+GlassesHat       | Delegations from every country, all day. One slow dish could start an incident. | 5
+New Year's Eve Countdown  | 0 | 3 | 85  | 2300 | 240 | 160 | 300 | TuxChef+SparklerHat      | The whole town celebrates with you until midnight. | 5
+Masquerade Ball           | 0 | 2 | 85  | 2200 | 250 | 160 | 280 | VampireChef+CapeHat      | The ball next door spills into your restaurant. Masks on, all day. | 5
+Sushi Masters' Tasting    | 0 | 1 | 80  | 1900 | 300 | 200 | 200 | SushiChef                | Master chefs from overseas judge every plate you serve today. | 5
+Opera Gala Intermission   | 0 | 2 | 65  | 2200 | 260 | 180 | 300 | TuxChef+FairyLightsHat   | Opera night: every interval brings a fresh, hungry, very elegant crowd. | 5
+Yacht Club Luncheon       | 0 | 3 | 90  | 1900 | 220 | 140 | 250 | TuxChef+PirateHat        | The yacht club takes the day off the water and books you for all of it. | 5

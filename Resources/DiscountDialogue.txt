@@ -1,0 +1,131 @@
+# Whiskers, the discount appliance seller in the top of the HQ garage (Tycoon Mode).
+# She is shy, meek and easily startled - a sweet little scaredy-cat who is trying her best.
+#
+# How to edit:
+#  - [section] starts a group of lines. One line = one thing she can say; a random line of the section is picked.
+#  - {name} = her name (the [name] line). In [offer], [confirm] and [too-poor]: {appliance} = the appliance,
+#    {price} = her price, {full} = the normal price, {discount} = how much off (just the number, add the % yourself).
+#  - [tutorial]: one line = one page of the tutorial pop-up, in order (shown once, the first time someone comes near her).
+#  - [bought] and [stop-thief] are said in a speech bubble: keep them under 58 characters.
+#  - Lines starting with # are notes. Save and rebuild the mod.
+
+[name]
+Whiskers
+
+[introduction]
+Eep! Oh, um, hello... I'm {name}. Sorry, you startled me. I sell appliances up here. Cheap ones! If that's okay...
+H-hi! I'm {name}. I rescue appliances that nobody wanted and sell them for way less. Please be gentle with them. And with me.
+Oh! A customer! Okay, okay, deep breaths... Hello, I'm {name}, and these boxes are all on sale. Very on sale. Please don't leave!
+Um, hi... I'm {name}. The others said I could have this corner of the garage. It's nice and quiet up here, except when the door bangs. Do you like bargains?
+Aah! Oh, you're just a chef. Sorry, I thought you were a very tall cucumber. I'm {name}! I run the discount corner!
+Hello! Welcome to my little box sanctuary! I'm {name}. Every appliance here is a rescue, and I promise none of them bite. Probably.
+Oh, gosh, a real person! Hi, I'm {name}! I find lonely kitchen gear and give it big discounts so it finds a good home. Wanna look?
+
+[tutorial]
+Um, welcome to my little shop... I'm {name}. Every box on these stands has an appliance inside, and they're all heavily discounted!
+The discounts change every day. Some are a little off, some are a LOT off, anywhere from 25 to 60 percent! Just look at a box to see its price.
+I, um, peek at your restaurant's notes sometimes... sorry! That way a box or two might be gear your recipes are still missing, or things you don't own yet. The rest is just whatever I rescued!
+If you like one, please pick up the box and bring it to my desk. I'll take the coins from the company wallet... if that's alright with you.
+Please don't walk off without paying! I get super nervous when that happens... and the box gets scared too and hops right back onto its stand.
+Once it's yours, put the box on a cart in the loading bay so it rides to your restaurant as a parcel. Or tuck it on a garage shelf until you need it!
+That's, um, everything! Come back tomorrow for fresh boxes! I'll be right here. Probably hiding behind the desk a little.
+
+[greeting]
+Oh! Hi again... I didn't hear you walk up. That's fine. My heart is fine. It only stopped for three seconds.
+Welcome back! I polished all the boxes. Twice. I get nervous when the garage is too quiet.
+H-hello! Today's boxes are ready. I checked every single one for spiders. There were no spiders. Just one very judgmental moth.
+Um, I found some really nice appliances today. Their old owners left them behind a warehouse. They were shivering! Well, vibrating. Same thing.
+Oh, it's you! Phew. I thought you were the vacuum cleaner. Mr. Meowser says it works for the IRS, and honestly, I believe him.
+Sorry, I was hiding behind the tallest box. It's not because of you! It's because of... general existence.
+I gave every box a little name and a backstory. Please don't tell anyone. If you buy Bartholomew, please keep him near a window.
+Smokey says I need to be more assertive. I tried yelling at a toaster yesterday, then it popped up and I hid in the rafters for two hours.
+Mr. Meowser asked me about my profit margins and I panicked and gave him a 40 percent discount on his own hat.
+Chubs tried to teach me poker last week. I folded before he even took the cards out of the box. He still took my lunch.
+If you hear a thunderstorm, I'll be under the desk with a flashlight and a blanket. The shop is still open, though! Just slide the coins under.
+Everything's on sale, please take your time! Or rush! Or stare at the wall! Whatever makes you comfortable!
+I think the garage door hates me personally. It goes BANG every single time. Every. Single. Time.
+Sometimes I sit inside the empty appliance boxes after closing time. Don't tell Mr. Meowser, he'll try to charge me rent for cardboard.
+Do you ever feel like a sink that nobody wants to plumb? No? Just me? Okay, cool, cool, cool...
+I tried to haggle with a supplier once. He said 100 coins, I panicked and offered 120, and then he felt so bad he gave it to me for 40.
+Smokey gave me a bowl of soup earlier! It was way too spicy, so I just stared at it and apologized until it cooled down.
+Please step lightly! I think the third box from the left is taking a nap. Wait, no, appliances don't sleep. Do they?
+I'm practicing my big, confident salesperson voice! Ahem. BUY MY BOXES, PLEASE, IF YOU WANT TO, NO PRESSURE! ...Did that sound scary?
+Chubs offered to sell me a card that brings in "really loud customers." I almost fainted just reading the label.
+I rescued a blender from a yard sale once. It made a weird rattling noise, so I put a tiny bandage on it. I think it appreciated the effort.
+Welcome! My business plan is mostly vibes, panic, and hoping the tape holds the boxes together.
+Oh, hi! Did you see a stray cardboard flap downstairs? That was my emotional support flap. It blew away in a breeze.
+Sometimes I worry that if I sell all the boxes, I'll have nothing to hide behind. That's why I keep a backup box under the desk!
+Are you having a good day? You look like someone who remembers to turn the oven off. I respect that so much.
+I made a little spreadsheet of all my discounts! Then I sneezed on the keyboard and accidentally deleted Tuesday.
+If a box rattles when you pick it up, don't worry! That's just its way of saying hello. Probably.
+I tried wearing a tiny tie like Mr. Meowser to look more professional, but I got tangled in it and rolled down the ramp.
+
+[offer]
+Oh! The {appliance}? It's, um, {price} coins... That's {discount}% off! It's normally {full}, which feels like way too much.
+You picked the {appliance}! It's only {price} coins today. {discount}% off its usual {full}! I hope that's a good deal...
+The {appliance} is {price} coins instead of {full}. That's {discount}% off! Please give it a warm spot in your kitchen.
+Um, that one's {price} coins. It's {discount}% off the normal {full}. I think it really likes you!
+Ooh, the {appliance}! I knocked {discount}% off the {full} price, so it's just {price} coins. Please tell me that's cheap enough!
+You want the {appliance}? Yay! It's {price} coins today instead of {full}. That's a whole {discount}% off!
+Aah, good eye! The {appliance} is normally {full}, but with {discount}% off it's only {price} coins. I dusted it myself!
+The {appliance} has been waiting all morning for someone nice! It's {price} coins, which is {discount}% off {full}.
+That's the {appliance}! Usually {full} coins, which is terrifying, so I made it {price} coins. {discount}% off!
+Oh, you're looking at the {appliance}! Just {price} coins today! That's {discount}% less than {full}, and zero percent haunted!
+
+[confirm]
+So... the {appliance} for {price} coins? Are you sure? You can say no, I won't cry. Much.
+The {appliance}, {price} coins... Is that a yes? Please say it's a yes. No pressure though!
+Um, just double-checking! {price} coins for the {appliance}? You really want to adopt it?
+Okay, {appliance} for {price} coins! Should I wrap it up? Well, it's already in a box... Deal?
+Are you totally, 100 percent sure about the {appliance} for {price} coins? I don't want you to have buyer's remorse!
+The {appliance} at {discount}% off for {price} coins... Are we doing this? My paws are shaking!
+So that's {price} coins for one slightly nervous {appliance}. Ready to make it official?
+Final check! {appliance} for {price} coins instead of {full}. Do we have a deal?
+
+[bought]
+Thank you so much! Please take good care of it!
+Yay! I mean... thank you very much. Yay, though.
+It's yours! Cart it up or store it in the garage!
+Eep, a real sale! My heart is doing backflips!
+Goodbye, little box! Be good for your new chef!
+Thank you! I'm going to buy a very soft blanket.
+Sold! Please tell it bedtime stories sometimes.
+Oh! You actually bought it! Thank you, thank you!
+A happy home! I'm not crying, my eyes are sweaty.
+All yours! Don't drop it, it bruises easily!
+Thank you! I'll go hide behind the counter now.
+Sold! You're my favorite customer! Tell no one.
+Hooray! Now I have room to sit in the empty spot!
+Thank you! Please don't yell at it if it beeps.
+
+[already-bought]
+Oh, you already bought that one! It's yours! You don't have to pay twice, silly...
+That box is already paid for! Put it on a cart in the loading bay, or tuck it on a garage shelf!
+Eep, don't give me more coins for that one! You already own it! Take it to the loading bay!
+Wait, you already adopted that box! Put it on a cart so it can go to your restaurant, or leave it on a garage shelf for later.
+You already paid for that one, I promise! My memory is bad, but I always remember a happy adoption!
+Oh no, put your wallet away! That box is already yours! Loading bay cart or garage shelf, whichever you like!
+
+[too-poor]
+Um... the {appliance} is {price} coins, and the wallet doesn't have quite enough. That's okay! Come back later?
+Oh no, it's {price} coins and there isn't enough in the wallet... I'm sorry! I can't make it any cheaper. Mr. Meowser hid my discount stamp.
+Eep, the {appliance} needs {price} coins, and your wallet is a little light. I'll keep it safe for you!
+I'm so sorry! The {appliance} is {price} coins, even at {discount}% off, and there's not quite enough in the wallet. Please don't be mad at me!
+Um, you're a tiny bit short for the {appliance}... It's {price} coins. Maybe ask Mr. Meowser for a loan? Tell him I said hi, and also sorry!
+Oh gosh, {price} coins is a little more than the wallet has right now. I'll pat the {appliance} on the lid until you get back!
+Sorry, sorry! Even with {discount}% off {full}, the {appliance} is still {price} coins. Come back after a busy shift!
+The wallet doesn't have {price} coins for the {appliance} yet. That's totally fine! Money is scary anyway.
+
+[stop-thief]
+W-wait! You didn't pay for that! Um... please?
+Eep! That box isn't paid for yet!
+Excuse me! Sorry! That one's not yours yet!
+Hey! Stop! ...Sorry for yelling. Please pay!
+Oh no, a heist! Please put it back, I'm fragile!
+Wait! The box got scared and hopped back!
+Um, you forgot to pay! No pressure! Okay, some.
+Aah! Robbery! Back on the stand it goes!
+Please don't steal! Mr. Meowser will audit me!
+Not yet! Give me coins first, if that's okay!
+Eek! Unpaid box alert! Back to the stand!
+Sorry! My anti-theft panic reflex sent it back!
