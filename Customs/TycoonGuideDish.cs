@@ -90,4 +90,12 @@ namespace PlateUpTycoon.Customs
     public class TycoonGuidePage6_5 : TycoonGuideDish { protected override int Section => 6; protected override int Page => 5; }
     public class TycoonGuidePage6_6 : TycoonGuideDish { protected override int Section => 6; protected override int Page => 6; }
     public class TycoonGuidePage6_7 : TycoonGuideDish { protected override int Section => 6; protected override int Page => 7; }
+    public class TycoonGuidePage7_0 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 0; }
+    public class TycoonGuidePage7_1 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 1; }
+    public class TycoonGuidePage7_2 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 2; }
+    public class TycoonGuidePage7_3 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 3; }
+    public class TycoonGuidePage7_4 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 4; }
+    public class TycoonGuidePage7_5 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 5; }
+    public class TycoonGuidePage7_6 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 6; }
+    public class TycoonGuidePage7_7 : TycoonGuideDish { protected override int Section => 7; protected override int Page => 7; }
 }

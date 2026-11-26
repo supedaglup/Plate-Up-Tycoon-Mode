@@ -10,8 +10,8 @@ namespace PlateUpTycoon
     {
         public const string MOD_GUID = "com.lucas.plateuptycoon";
         public const string MOD_NAME = "Tycoon Mode";
-        public const string MOD_VERSION = "0.3.0";
-        public const string BUILD = "2026-11-25 ht (first public release, 0.3.0)";
+        public const string MOD_VERSION = "0.3.1";
+        public const string BUILD = "2026-11-26 ia (release 0.3.1)";
         public const string MOD_AUTHOR = "supedaglup";
         public const string MOD_GAMEVERSION = ">=1.1.9";
 
@@ -24,6 +24,7 @@ namespace PlateUpTycoon
         public static class Ledger
         {
             public static int Rent, Utilities, Upkeep, Restocking, Licences, DirtyFloors, TrashLeft, Purchases, Tips, CostsHeading, Cash, Debt, Loan, InspectionFine, Wages;
+            public static int CurbSale;
             public static int ReputationGained, ReputationTotal, StarChange;
             public static int RepServing, RepFullHouse, RepDecor, RepMarketing, RepContract, RepInspection, RepSlow, RepWalkouts, RepFastCasual, RepDecay, RepOther, RepIngredients;
 
@@ -35,7 +36,7 @@ namespace PlateUpTycoon
                     || id == DirtyFloors || id == TrashLeft || id == Purchases || id == Loan || id == InspectionFine || id == Wages);
 
             public static bool IsTycoonId(int id) =>
-                id != 0 && (IsCostRow(id) || id == Tips || id == CostsHeading || IsMarker(id));
+                id != 0 && (IsCostRow(id) || id == Tips || id == CurbSale || id == CostsHeading || IsMarker(id));
         }
 
         public static Customs.PurchasingDesk PurchasingDesk { get; private set; }
@@ -183,6 +184,7 @@ namespace PlateUpTycoon
             Ledger.InspectionFine = AddGameDataObject<Customs.LedgerInspectionFine>().ID;
             Ledger.Wages = AddGameDataObject<Customs.LedgerWages>().ID;
             Ledger.Tips = AddGameDataObject<Customs.LedgerTips>().ID;
+            Ledger.CurbSale = AddGameDataObject<Customs.LedgerCurbSale>().ID;
             Ledger.CostsHeading = AddGameDataObject<Customs.LedgerCostsHeading>().ID;
             Ledger.Cash = AddGameDataObject<Customs.LedgerCashMarker>().ID;
             Ledger.Debt = AddGameDataObject<Customs.LedgerDebtMarker>().ID;

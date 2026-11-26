@@ -23,7 +23,7 @@ namespace PlateUpTycoon.Patches
             if (__instance == null) return;
             int id = __instance.GetInstanceID();
             if (TycoonDayBar.TryApply(view_data.Process, view_data.Progress) || TycoonReputationBar.TryApply(view_data.Process, view_data.Progress)
-                || TycoonReputationBar.TryApplyNeeded(view_data.Process))
+                || TycoonReputationBar.TryApplyNeeded(view_data.Process, view_data.Progress))
             {
                 if (Trimmed.ContainsKey(id)) return;
                 Transform hidden = (Field<GameObject>(__instance, "ProgressIndicator") ?? __instance.gameObject).transform;

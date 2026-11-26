@@ -22,6 +22,8 @@ namespace PlateUpTycoon.Systems
 
         internal static HashSet<int> WaitingForRecipe { get; private set; } = new HashSet<int>();
 
+        internal static readonly HashSet<int> Ordered = new HashSet<int>();
+
         internal static string NeededName(int id) =>
             id == NEEDED_RECIPE ? "a recipe (switch one on at the Management Desk)"
             : GameData.Main.TryGet<Appliance>(id, out Appliance a) && !string.IsNullOrEmpty(a.Name) ? a.Name : id.ToString();
@@ -131,8 +133,8 @@ namespace PlateUpTycoon.Systems
             Blocking = needed.Count > 0;
             if (Blocking != wasBlocking) EntityManager.CreateEntity(typeof(CRequireStartDayWarningRecalculation));
             var names = new List<string>();
-            foreach (int id in needed) names.Add(NeededName(id));
-            string report = Blocking ? "Cards: the day can't start until these are bought: " + string.Join(", ", names) + "." : "";
+            foreach (int id in needed) names.Add(NeededName(id) + (Ordered.Contains(id) ? " (on its way)" : ""));
+            string report = Blocking ? "Cards: the day can't start until these have arrived: " + string.Join(", ", names) + "." : "";
             if (report != _lastReport)
             {
                 _lastReport = report;
@@ -288,8 +290,9 @@ namespace PlateUpTycoon.Systems
                 for (int i = 0; i < appliances.Length; i++) owned.Add(appliances[i].ID);
             using (NativeArray<CLetterAppliance> letters = _applianceParcels.ToComponentDataArray<CLetterAppliance>(Allocator.Temp))
                 for (int i = 0; i < letters.Length; i++) owned.Add(letters[i].ApplianceID);
+            Ordered.Clear();
             using (NativeArray<CTycoonPendingDelivery> orders = _orders.ToComponentDataArray<CTycoonPendingDelivery>(Allocator.Temp))
-                for (int i = 0; i < orders.Length; i++) owned.Add(orders[i].ApplianceID);
+                for (int i = 0; i < orders.Length; i++) Ordered.Add(orders[i].ApplianceID);
 
             foreach (int id in owned)
             {
@@ -370,8 +373,9 @@ namespace PlateUpTycoon.Systems
                 int slot = EntityManager.GetComponentData<CTycoonNeededItemCarrier>(carriers[i]).Slot;
                 int applianceID = slot < needed.Count ? needed[slot] : 0;
                 int process = Patches.TycoonReputationBar.EncodeNeeded(slot, applianceID, slot == SLOTS - 1 && needed.Count > SLOTS);
+                float onItsWay = applianceID != 0 && Ordered.Contains(applianceID) ? 1f : 0f;
                 CProgressIndicator current = EntityManager.GetComponentData<CProgressIndicator>(carriers[i]);
-                if (current.Process != process) EntityManager.SetComponentData(carriers[i], new CProgressIndicator { Process = process, Progress = 0f });
+                if (current.Process != process || current.Progress != onItsWay) EntityManager.SetComponentData(carriers[i], new CProgressIndicator { Process = process, Progress = onItsWay });
             }
         }
     }

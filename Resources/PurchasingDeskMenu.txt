@@ -6,6 +6,9 @@
 #   # ...                                         a comment.
 #
 # - [IconAppliance] is optional: the folder's tile shows that appliance's picture (else its first appliance).
+# - <Recipe, Recipe...> is optional: the folder also gets every ingredient those recipes and all their Recipe Mastery
+#   add-ons need (English recipe names), so an add-on's ingredients sit with their recipe. Anything already in the
+#   folder or one of its sub-folders is not repeated. The menu log marks those as "(recipe)".
 # - {FallbackCategory} only goes on top-level folders: purchasable appliances this file does not mention
 #   are added to the end of the top-level folder whose fallback category the game's shop tags point to,
 #   so nothing is ever missing. The menu log (TycoonMenuLayout.txt) marks those as "(auto)".
@@ -38,7 +41,7 @@
   PicklingStation
 
 + Ingredients [SourceFish] {Ingredients}
-  + Coffee [CoffeeMachine]
+  + Coffee [CoffeeMachine] <Coffee, Black Coffee>
     CoffeeMachine
     IceDispenser
     SourceCakeStand
@@ -49,7 +52,7 @@
       SourceTeaBags
       SourceTeaCups
       SourceTeaPots
-  + Salad [SourceLettuce]
+  + Salad [SourceLettuce] <Salad>
     SourceLettuce
     SourceTomato
     SourceOnion
@@ -58,7 +61,7 @@
       SourceApple
       SourceNuts
     SourcePotato
-  + Steak [SourceMeat]
+  + Steak [SourceMeat] <Steak>
     SourceMeat
     SourceThickMeat
     SourceThinMeat
@@ -67,56 +70,56 @@
       SourceMushroom
       SourceWine
     SourceTomato
-  + Burgers [SourceBurgerBuns]
+  + Burgers [SourceBurgerBuns] <Burgers>
     SourceBurgerBuns
     SourceBurgerPatty
     SourceCheese
     SourceTomato
     SourceOnion
-  + Hot Dogs [SourceHotdog]
+  + Hot Dogs [SourceHotdog] <Hot Dogs>
     SourceHotdogBun
     SourceHotdog
     + Condiments [SourceKetchup]
       SourceKetchup
       SourceMustard
-  + Breakfast [SourceEgg]
+  + Breakfast [SourceEgg] <Breakfast>
     SourceEgg
     SourceBeans
     SourceMushroom
     SourceTomato
-  + Stir Fry [SourceRice]
+  + Stir Fry [SourceRice] <Stir Fry>
     SourceRice
     SourceBroccoli
     SourceCarrot
     SourceMushroom
     SourceBamboo
     SourceSoySauce
-  + Pies [SourceFlour]
+  + Pies [SourceFlour] <Pies, Apple Pies, Cherry Pies, Pumpkin Pies>
     SourceFlour
     SourceMeat
     SourceMushroom
     SourceApple
     SourcePumpkin
     SourceCherry
-  + Fish [SourceFish]
+  + Fish [SourceFish] <Fish>
     SourceFish
     SourceFish2
     SourcePotato
-  + Turkey [SourceTurkey]
+  + Turkey [SourceTurkey] <Turkey>
     SourceTurkey
     SourceCranberry
-  + Pizza [SourceCheese]
+  + Pizza [SourceCheese] <Pizza>
     SourceFlour
     SourceTomato
     SourceCheese
     SourceMushroom
     SourceOnion
-  + Dumplings [SourceSeaweed]
+  + Dumplings [SourceSeaweed] <Dumplings>
     SourceFlour
     SourceMeat
     SourceSeaweed
     SourceSoySauce
-  + Pasta [SourceSpaghetti]
+  + Pasta [SourceSpaghetti] <Spaghetti>
     SourceSpaghetti
     SourceMince
     SourceTomato
@@ -126,7 +129,9 @@
       SourceLasagnePastaSheet
       SourceLasagneTray
       SourceButter
-  + Tacos [ProviderTacoTray]
+  + Fajitas [SourceBellPeppers] <Fajitas>
+  + Sandwiches <Sandwiches>
+  + Tacos [ProviderTacoTray] <Tacos>
     ProviderTacoTray
     ProviderTortilla
     SourceMince
@@ -138,17 +143,17 @@
       SourceLime
     SourceBellPeppers
     SourceFryingPan
-  + Desserts [SourceIceCream]
-    + Ice Cream [SourceIceCream]
+  + Desserts [SourceIceCream] <Cheese Board, Affogato, Dessert Waffles>
+    + Ice Cream [SourceIceCream] <Ice Cream, Ice Cream - Bananas, Ice Cream - Nuts, Ice Cream - Strawberry>
       SourceIceCream
-    + Sundaes [SourceSundaeGlasses]
+    + Sundaes [SourceSundaeGlasses] <Sundaes>
       SourceSundaeGlasses
       SourceChocolateSyrup
       SourceStrawberrySyrup
       SourceStrawberry
       SourceBananas
       SourceNuts
-    + Cakes [SourceBigCakeTin]
+    + Cakes [SourceBigCakeTin] <Cakes>
       SourceBigCakeTin
       SourceBrownieTray
       SourceCookieTray
@@ -163,14 +168,14 @@
     SourceCheese
     SourceCherry
     SourceChristmasCracker
-  + Starters & Sides [SourceCarrot]
-    + Soups [SourcePumpkin]
+  + Starters & Sides [SourceCarrot] <Bread, Pumpkin Seed, Mandarin Starter>
+    + Soups [SourcePumpkin] <Carrot Soup, Meat Soup, Tomato Soup, Pumpkin Soup, Broccoli Cheese Soup>
       SourceTomato
       SourceCarrot
       SourceBroccoli
       SourcePumpkin
       SourceMeat
-    + Sides [SourcePotato]
+    + Sides [SourcePotato] <Chips, Mashed Potato, Onion Rings, Broccoli, Corn on the Cob, Roast Potato, Sweetcorn, Bamboo>
       SourcePotato
       SourceBroccoli
       SourceCorn

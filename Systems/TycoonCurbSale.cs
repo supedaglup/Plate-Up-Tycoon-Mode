@@ -1,8 +1,18 @@
 using Kitchen;
+using PlateUpTycoon.Components;
 using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
 using UnityEngine;
+
+namespace PlateUpTycoon.Components
+{
+    /// <summary>Today's curb sales, paid at closing.</summary>
+    public struct STycoonCurbSalePending : IComponentData
+    {
+        public int Amount;
+    }
+}
 
 namespace PlateUpTycoon.Systems
 {
@@ -14,6 +24,12 @@ namespace PlateUpTycoon.Systems
 
         internal static int SellCurb(EntityManager em)
         {
+            using (EntityQuery practice = em.CreateEntityQuery(typeof(SPracticeMode)))
+                if (!practice.IsEmpty)
+                {
+                    Mod.LogInfo("Curb sale: practice mode, nothing is sold.");
+                    return 0;
+                }
             int total = 0;
             var sold = new List<string>();
             using EntityQuery marked = em.CreateEntityQuery(typeof(CDestroyApplianceAtDay), typeof(CAppliance));
@@ -37,16 +53,31 @@ namespace PlateUpTycoon.Systems
             }
             if (total <= 0) return 0;
 
-            using (EntityQuery till = em.CreateEntityQuery(typeof(SMoney)))
-                if (!till.IsEmpty)
+            using (EntityQuery pending = em.CreateEntityQuery(typeof(STycoonCurbSalePending)))
+            {
+                if (pending.IsEmpty)
                 {
-                    Entity tillEntity = till.GetSingletonEntity();
-                    SMoney money = em.GetComponentData<SMoney>(tillEntity);
-                    money.Amount += total;
-                    em.SetComponentData(tillEntity, money);
+                    Entity e = em.CreateEntity(typeof(STycoonCurbSalePending), typeof(CDoNotPersist));
+                    em.SetComponentData(e, new STycoonCurbSalePending { Amount = total });
                 }
-            Mod.LogInfo($"Curb sale: sold {string.Join(", ", sold)} for {total} coins in all.");
+                else
+                {
+                    STycoonCurbSalePending p = pending.GetSingleton<STycoonCurbSalePending>();
+                    p.Amount += total;
+                    pending.SetSingleton(p);
+                }
+            }
+            Mod.LogInfo($"Curb sale: sold {string.Join(", ", sold)} for {total} coins in all, paid at closing.");
             return total;
+        }
+
+        internal static int TakePending(EntityManager em)
+        {
+            using EntityQuery pending = em.CreateEntityQuery(typeof(STycoonCurbSalePending));
+            if (pending.IsEmpty) return 0;
+            int amount = pending.GetSingleton<STycoonCurbSalePending>().Amount;
+            em.DestroyEntity(pending.GetSingletonEntity());
+            return amount;
         }
 
         private static void CoinPopup(EntityManager em, Vector3 at, int coins)

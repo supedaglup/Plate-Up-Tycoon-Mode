@@ -59,7 +59,23 @@ namespace PlateUpTycoon.Systems
         protected override void OnUpdate()
         {
             int day = HasSingleton<SDay>() ? GetSingleton<SDay>().Day : 0;
-            if (day < 1 || HasSingleton<SIsRestartedDay>())
+            if (day < 1) return;
+
+            TycoonCompany.EnsureLoaded();
+            TycoonCompany.DayOpen = false;
+            TycoonCompany.Save();
+
+            int curb = TycoonCurbSale.TakePending(EntityManager);
+            if (curb > 0)
+            {
+                SMoney till = GetSingleton<SMoney>();
+                till.Amount += curb;
+                Set(till);
+                MoneyTracker.AddEvent(new EntityContext(EntityManager), Mod.Ledger.CurbSale, curb);
+                Mod.LogInfo($"Curb sale: {curb} coins paid at closing.");
+            }
+
+            if (HasSingleton<SIsRestartedDay>())
                 return;
 
             STycoonEconomy economy = HasSingleton<STycoonEconomy>() ? GetSingleton<STycoonEconomy>() : default;
@@ -90,7 +106,7 @@ namespace PlateUpTycoon.Systems
             int tiles = TileManager.InteriorTileCount();
             SMoney money = GetSingleton<SMoney>();
             int before = money.Amount;
-            int takings = TodaysTakings(before);
+            int takings = TodaysTakings(before) - curb;
             int messes = TycoonDayPhases.MessesLeft, trash = TycoonDayPhases.TrashLeft;
             int players = UnityEngine.Mathf.Max(1, _players.CalculateEntityCount());
             int plates = TycoonDayPhases.DisposablePlates;

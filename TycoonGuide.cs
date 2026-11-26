@@ -7,8 +7,9 @@ namespace PlateUpTycoon
     /// <summary>The Tycoon guide: pages shown with the game's recipe pop-up, like the bank tutorial.</summary>
     public static class TycoonGuide
     {
-        public const int SECTIONS = 7, MAX_PAGES = 8;
+        public const int SECTIONS = 8, MAX_PAGES = 8;
         public const int HQ = 0;
+        public const int MASTERY = 7;
         public static int StarSection(int stars) => 1 + stars;
 
         private static string[] _titles;
@@ -35,7 +36,7 @@ namespace PlateUpTycoon
                     {
                         int end = line.IndexOf(']');
                         string key = end > 0 ? line.Substring(1, end - 1).Trim().ToLowerInvariant() : "";
-                        section = key == "hq" ? HQ : key.StartsWith("star") && int.TryParse(key.Substring(4), out int s) && s >= 0 && s <= 5 ? StarSection(s) : -1;
+                        section = key == "hq" ? HQ : key == "mastery" ? MASTERY : key.StartsWith("star") && int.TryParse(key.Substring(4), out int s) && s >= 0 && s <= 5 ? StarSection(s) : -1;
                         if (section >= 0 && end > 0 && end + 1 < line.Length) _titles[section] = line.Substring(end + 1).Trim();
                         continue;
                     }

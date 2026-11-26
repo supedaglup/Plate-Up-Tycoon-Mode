@@ -759,12 +759,13 @@ namespace PlateUpTycoon.Systems
         [HarmonyPrefix]
         private static bool Prefix(AssignmentSystem __instance, CAvailableAssignment assignment)
         {
-            if (!(__instance is OpenTables) || !TycoonSession.IsActive) return true;
+            bool tables = __instance is OpenTables, stands = __instance is OpenHostStands;
+            if (!(tables || stands) || !TycoonSession.IsActive) return true;
             try
             {
                 EntityManager em = __instance.EntityManager;
-                using (EntityQuery takeOut = em.CreateEntityQuery(typeof(STycoonTakeOutOn))) if (takeOut.IsEmpty) return true;
-                using (EntityQuery counters = em.CreateEntityQuery(typeof(CTycoonOrderingCounter))) if (counters.IsEmpty) return true;
+                if (!TycoonHostStandBypassPatch.CounterTakeOut(em)) return true;
+                if (stands) return false;
                 return TycoonTakeOutCounterSystem.IsOrderingCounterSet(em, assignment.Entity);
             }
             catch (System.Exception e)
@@ -772,6 +773,64 @@ namespace PlateUpTycoon.Systems
                 Mod.LogWarning("Counter-only seating: " + e.Message);
                 return true;
             }
+        }
+    }
+
+    /// <summary>While Take-Out has an Ordering Counter, customers ignore any Hosting Stand.</summary>
+    [HarmonyPatch(typeof(ResolveCustomerAssignments), "OnUpdate")]
+    public static class TycoonHostStandBypassPatch
+    {
+        private static bool _ignore, _failed;
+        private static bool? _logged;
+
+        internal static bool CounterTakeOut(EntityManager em)
+        {
+            using (EntityQuery takeOut = em.CreateEntityQuery(typeof(STycoonTakeOutOn))) if (takeOut.IsEmpty) return false;
+            using (EntityQuery counters = em.CreateEntityQuery(typeof(CTycoonOrderingCounter))) return !counters.IsEmpty;
+        }
+
+        public static bool StandsEmpty(ref EntityQuery stands) => _ignore || stands.IsEmpty;
+
+        [HarmonyPrefix]
+        private static void Prefix(ResolveCustomerAssignments __instance)
+        {
+            _ignore = false;
+            if (_failed || !TycoonSession.IsActive) return;
+            try
+            {
+                _ignore = CounterTakeOut(__instance.EntityManager);
+                if (_ignore != _logged)
+                {
+                    _logged = _ignore;
+                    Mod.LogInfo(_ignore ? "Take-Out: customers ignore any Hosting Stand and go to the Ordering Counters." : "Take-Out: Hosting Stands work as normal.");
+                }
+            }
+            catch (System.Exception e)
+            {
+                _failed = true;
+                Mod.LogWarning("Hosting Stand bypass: " + e.Message);
+            }
+        }
+
+        [HarmonyTranspiler]
+        private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var list = new List<CodeInstruction>(instructions);
+            System.Reflection.FieldInfo field = AccessTools.Field(typeof(ResolveCustomerAssignments), "HostStands");
+            System.Reflection.MethodInfo isEmpty = AccessTools.PropertyGetter(typeof(EntityQuery), nameof(EntityQuery.IsEmpty));
+            bool done = false;
+            for (int i = 0; i + 1 < list.Count && !done; i++)
+            {
+                if (list[i].opcode == System.Reflection.Emit.OpCodes.Ldflda && Equals(list[i].operand, field)
+                    && Equals(list[i + 1].operand, isEmpty))
+                {
+                    list[i + 1].opcode = System.Reflection.Emit.OpCodes.Call;
+                    list[i + 1].operand = AccessTools.Method(typeof(TycoonHostStandBypassPatch), nameof(StandsEmpty));
+                    done = true;
+                }
+            }
+            if (!done) Mod.LogWarning("Hosting Stand bypass: the stand check was not found; Hosting Stands keep their normal behaviour.");
+            return list;
         }
     }
 }

@@ -71,6 +71,13 @@ namespace PlateUpTycoon.Customs
         protected override string Label => "Cleaning fee: trash not taken out";
     }
 
+    /// <summary>Appliances sold on the curb, paid at closing.</summary>
+    public class LedgerCurbSale : LedgerText
+    {
+        public override string UniqueNameID => "TycoonLedgerCurbSale";
+        protected override string Label => "Curb sales";
+    }
+
     /// <summary>End-of-day row: income the game does not itemise.</summary>
     public class LedgerTips : LedgerText
     {

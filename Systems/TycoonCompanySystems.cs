@@ -40,6 +40,7 @@ namespace PlateUpTycoon.Systems
                     Set(new STycoonLoan());
                 }
                 Entity tag = EntityManager.CreateEntity(typeof(STycoonCompanyLinked), typeof(CDoNotPersist));
+                TycoonCompany.RollBackUnfinishedDay("restaurant loaded");
                 money.Amount = TycoonCompany.Cash;
                 Set(money);
                 TycoonCompany.Save();
@@ -75,6 +76,7 @@ namespace PlateUpTycoon.Systems
         {
             if (!TycoonSession.IsActive) return;
             TycoonCompany.EnsureLoaded();
+            TycoonCompany.RollBackUnfinishedDay("HQ");
             if (_displays.IsEmpty)
             {
                 Entity e = EntityManager.CreateEntity(typeof(CTycoonHqMoney), typeof(CMoneyDisplay), typeof(CPosition), typeof(CRequiresView), typeof(CDoNotPersist));
@@ -164,6 +166,31 @@ namespace PlateUpTycoon.Systems
                 Mod.LogInfo($"Bank: a player walked into the office for the first time; showing the bank tutorial ({Customs.BankTutorialDish.PageCount} page(s)).");
                 return;
             }
+        }
+    }
+
+    /// <summary>At the first frame of a restaurant day, the wallet is noted and the day marked open in the company file.</summary>
+    public class TycoonDayStartWalletSystem : RestaurantSystem, IModSystem
+    {
+        protected override void Initialise()
+        {
+            base.Initialise();
+            RequireSingletonForUpdate<STycoonMode>();
+            RequireSingletonForUpdate<SIsDayFirstUpdate>();
+            RequireSingletonForUpdate<STycoonCompanyLinked>();
+            RequireSingletonForUpdate<SMoney>();
+        }
+
+        protected override void OnUpdate()
+        {
+            if (HasSingleton<SPracticeMode>() || HasSingleton<SGameOver>()) return;
+            TycoonCompany.EnsureLoaded();
+            int cash = GetSingleton<SMoney>().Amount;
+            TycoonCompany.Cash = cash;
+            TycoonCompany.DayStartCash = cash;
+            TycoonCompany.DayOpen = true;
+            TycoonCompany.Save();
+            Mod.LogInfo($"Company: day started with {cash} coins (given back if the day is not finished).");
         }
     }
 }

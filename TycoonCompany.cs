@@ -14,6 +14,8 @@ namespace PlateUpTycoon
         public static int Outstanding;
         public static int DailyPayment;
         public static int GraceNights;
+        public static bool DayOpen;
+        public static int DayStartCash;
         public static int TotalBorrowed;
         public static int LoansTaken;
         public static int PersonalLoans;
@@ -81,6 +83,7 @@ namespace PlateUpTycoon
             Cash = Mod.STARTING_MONEY;
             Outstanding = DailyPayment = GraceNights = TotalBorrowed = LoansTaken = PersonalLoans = 0;
             DiscountedDebt = _hasPersonalLoans = false;
+            DayOpen = false; DayStartCash = 0;
             MetBanker = BankTutorialSeen = MetChef = ChefTutorialSeen = MetDealer = CardTutorialSeen = MetWhiskers = DiscountTutorialSeen = false;
             GuideSeen = 0;
             ActiveSlot = 0;
@@ -121,6 +124,16 @@ namespace PlateUpTycoon
             }
         }
 
+        public static void RollBackUnfinishedDay(string where)
+        {
+            EnsureLoaded();
+            if (!DayOpen) return;
+            Mod.LogInfo($"Company: the last day was not finished; the wallet goes back from {Cash} to {DayStartCash} coins ({where}).");
+            Cash = DayStartCash;
+            DayOpen = false;
+            Save();
+        }
+
         public static void EnsureLoaded()
         {
             if (_loaded) return;
@@ -142,6 +155,8 @@ namespace PlateUpTycoon
                         case "Outstanding": Outstanding = n; break;
                         case "DailyPayment": DailyPayment = n; break;
                         case "GraceNights": GraceNights = n; break;
+                        case "DayOpen": DayOpen = n != 0; break;
+                        case "DayStartCash": DayStartCash = n; break;
                         case "TotalBorrowed": TotalBorrowed = n; break;
                         case "LoansTaken": LoansTaken = n; break;
                         case "PersonalLoans": PersonalLoans = n; _hasPersonalLoans = true; break;
@@ -218,6 +233,7 @@ namespace PlateUpTycoon
                 {
                     "# Tycoon Mode company (money shared by all restaurants). Written by the mod.",
                     "Cash=" + Cash, "Outstanding=" + Outstanding, "DailyPayment=" + DailyPayment, "GraceNights=" + GraceNights,
+                    "DayOpen=" + (DayOpen ? 1 : 0), "DayStartCash=" + DayStartCash,
                     "TotalBorrowed=" + TotalBorrowed, "LoansTaken=" + LoansTaken, "PersonalLoans=" + PersonalLoans, "DiscountedDebt=" + (DiscountedDebt ? 1 : 0),
                     "MetBanker=" + (MetBanker ? 1 : 0), "BankTutorialSeen=" + (BankTutorialSeen ? 1 : 0),
                     "MetChef=" + (MetChef ? 1 : 0), "ChefTutorialSeen=" + (ChefTutorialSeen ? 1 : 0),
@@ -280,6 +296,7 @@ namespace PlateUpTycoon
         {
             EnsureLoaded();
             Cash = Mod.STARTING_MONEY + Math.Max(0, carriedOver);
+            DayOpen = false;
             Outstanding = 0;
             DailyPayment = 0;
             GraceNights = 0;

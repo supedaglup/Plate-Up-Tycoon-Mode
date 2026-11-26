@@ -23,6 +23,7 @@ namespace PlateUpTycoon
             public readonly List<Folder> Folders = new List<Folder>();
             public readonly List<TycoonCatalogue.Entry> Appliances = new List<TycoonCatalogue.Entry>();
             public readonly HashSet<int> Auto = new HashSet<int>();
+            public readonly HashSet<int> FromRecipes = new HashSet<int>();
 
             public int TotalAppliances()
             {
@@ -65,6 +66,7 @@ namespace PlateUpTycoon
             public string Name;
             public string IconRef;
             public string FallbackName;
+            public string DishNames;
             public readonly List<object> Children = new List<object>();
             public int Line;
         }
@@ -89,6 +91,7 @@ namespace PlateUpTycoon
                     var folder = new RawFolder { Line = i + 1 };
                     string rest = trimmed.Substring(1).Trim();
                     rest = TakeBracketed(rest, '{', '}', out folder.FallbackName);
+                    rest = TakeBracketed(rest, '<', '>', out folder.DishNames);
                     rest = TakeBracketed(rest, '[', ']', out folder.IconRef);
                     folder.Name = rest.Trim();
                     parent.Children.Add(folder);
@@ -230,7 +233,54 @@ namespace PlateUpTycoon
                     if (seen.Add(id)) folder.Appliances.Add(entry);
                 }
             }
+            if (!string.IsNullOrEmpty(raw.DishNames)) AddRecipeIngredients(folder, raw, placed);
             return folder;
+        }
+
+        private static Dictionary<string, Dish> _dishesByName;
+
+        private static void AddRecipeIngredients(Folder folder, RawFolder raw, HashSet<int> placed)
+        {
+            if (_dishesByName == null)
+            {
+                _dishesByName = new Dictionary<string, Dish>(StringComparer.OrdinalIgnoreCase);
+                foreach (Dish d in GameData.Main.Get<Dish>())
+                {
+                    string name = TycoonRecipeShop.DisplayName(d);
+                    if (!string.IsNullOrEmpty(name) && !_dishesByName.ContainsKey(name)) _dishesByName[name] = d;
+                }
+            }
+            var present = new HashSet<int>();
+            CollectIDs(folder, present);
+            var none = new List<int>();
+            foreach (string part in raw.DishNames.Split(','))
+            {
+                string name = part.Trim();
+                if (name.Length == 0) continue;
+                if (!_dishesByName.TryGetValue(name, out Dish dish))
+                {
+                    Mod.LogWarning($"Menu layout line {raw.Line}: unknown recipe '{name}' (folder '{raw.Name}').");
+                    continue;
+                }
+                var dishes = new List<Dish> { dish };
+                dishes.AddRange(Systems.TycoonRecipeMastery.Track(dish.ID));
+                foreach (Dish d in dishes)
+                    foreach (int id in Systems.TycoonCardEffectsSystem.NeededFor(d, none))
+                    {
+                        if (present.Contains(id)) continue;
+                        if (!TycoonCatalogue.TryGet(id, out TycoonCatalogue.Entry entry) || entry.Category != TycoonCatalogue.Category.Ingredients) continue;
+                        present.Add(id);
+                        placed.Add(id);
+                        folder.Appliances.Add(entry);
+                        folder.FromRecipes.Add(id);
+                    }
+            }
+        }
+
+        private static void CollectIDs(Folder folder, HashSet<int> ids)
+        {
+            foreach (TycoonCatalogue.Entry e in folder.Appliances) ids.Add(e.ApplianceID);
+            foreach (Folder sub in folder.Folders) CollectIDs(sub, ids);
         }
 
         private static readonly List<(Folder folder, int applianceID)> _collapsed = new List<(Folder, int)>();
@@ -313,7 +363,7 @@ namespace PlateUpTycoon
             sb.AppendLine($"{pad}> {folder.Name}    [{path}]");
             foreach (Folder sub in folder.Folders) WriteFolder(sb, sub, depth + 1, path + " > " + sub.Name);
             foreach (TycoonCatalogue.Entry entry in folder.Appliances)
-                sb.AppendLine($"{pad}    - {entry.Name} ({entry.Cost}){(entry.IsUpgrade ? "  (upgrade)" : "")}{(folder.Auto.Contains(entry.ApplianceID) ? "  (auto)" : "")}");
+                sb.AppendLine($"{pad}    - {entry.Name} ({entry.Cost}){(entry.IsUpgrade ? "  (upgrade)" : "")}{(folder.Auto.Contains(entry.ApplianceID) ? "  (auto)" : "")}{(folder.FromRecipes.Contains(entry.ApplianceID) ? "  (recipe)" : "")}");
         }
     }
 }

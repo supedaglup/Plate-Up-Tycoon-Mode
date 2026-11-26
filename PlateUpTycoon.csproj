@@ -11,7 +11,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <!-- Mod metadata (edit freely) -->
-    <Version>0.1.0</Version>
+    <Version>0.3.1</Version>
     <Product>PlateUp! Tycoon Mode</Product>
     <Authors>supedaglup</Authors>
 

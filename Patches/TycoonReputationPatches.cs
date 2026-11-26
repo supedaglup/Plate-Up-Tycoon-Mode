@@ -528,6 +528,7 @@ namespace PlateUpTycoon.Patches
         private const int NEEDED_PER_SLOT = 100000;
         private const int NEEDED_RECIPE_INDEX = NEEDED_PER_SLOT / 2 - 1;
         private static readonly int[] NeededIndex = new int[Systems.TycoonCardEffectsSystem.SLOTS];
+        private static readonly bool[] NeededOnItsWay = new bool[Systems.TycoonCardEffectsSystem.SLOTS];
         private static bool _neededMore;
         private static List<int> _applianceIDs;
 
@@ -553,7 +554,7 @@ namespace PlateUpTycoon.Patches
             return NEEDED_BASE - (slot * NEEDED_PER_SLOT + index);
         }
 
-        internal static bool TryApplyNeeded(int process)
+        internal static bool TryApplyNeeded(int process, float progress)
         {
             if (process > NEEDED_BASE || process <= NEEDED_BASE - NEEDED_SPAN) return false;
             int value = NEEDED_BASE - process;
@@ -561,6 +562,7 @@ namespace PlateUpTycoon.Patches
             if (slot < 0 || slot >= NeededIndex.Length) return true;
             if (slot == NeededIndex.Length - 1) _neededMore = index >= NEEDED_PER_SLOT / 2;
             NeededIndex[slot] = index % (NEEDED_PER_SLOT / 2);
+            NeededOnItsWay[slot] = progress > 0.5f;
             Refresh();
             return true;
         }
@@ -568,12 +570,14 @@ namespace PlateUpTycoon.Patches
         private static string NeededText()
         {
             var names = new List<string>();
-            foreach (int index in NeededIndex)
+            for (int slot = 0; slot < NeededIndex.Length; slot++)
             {
+                int index = NeededIndex[slot];
                 if (index == NEEDED_RECIPE_INDEX) { names.Add(Systems.TycoonCardEffectsSystem.NeededName(Systems.TycoonCardEffectsSystem.NEEDED_RECIPE)); continue; }
                 if (index <= 0 || index > ApplianceIDs.Count) continue;
                 int id = ApplianceIDs[index - 1];
-                names.Add(KitchenData.GameData.Main.TryGet<KitchenData.Appliance>(id, out KitchenData.Appliance a) && !string.IsNullOrEmpty(a.Name) ? a.Name : id.ToString());
+                string name = KitchenData.GameData.Main.TryGet<KitchenData.Appliance>(id, out KitchenData.Appliance a) && !string.IsNullOrEmpty(a.Name) ? a.Name : id.ToString();
+                names.Add(NeededOnItsWay[slot] ? name + " (on its way)" : name);
             }
             if (names.Count == 0) return "";
             return "Needed Items: " + string.Join(", ", names) + (_neededMore ? ", ..." : "");

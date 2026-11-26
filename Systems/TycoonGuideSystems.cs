@@ -3,6 +3,7 @@ using KitchenData;
 using KitchenMods;
 using PlateUpTycoon.Components;
 using System.Collections.Generic;
+using Unity.Collections;
 using Unity.Entities;
 
 namespace PlateUpTycoon.Systems
@@ -62,7 +63,7 @@ namespace PlateUpTycoon.Systems
     public class TycoonGuideStarSystem : RestaurantSystem, IModSystem
     {
         private const float QUIET_SECONDS = 2f;
-        private EntityQuery _recipePopups, _popups;
+        private EntityQuery _recipePopups, _popups, _cards;
         private readonly TycoonGuidePager _pager = new TycoonGuidePager();
         private float _quietSince = -1f;
 
@@ -71,6 +72,7 @@ namespace PlateUpTycoon.Systems
             base.Initialise();
             _recipePopups = GetEntityQuery(new QueryHelper().All(typeof(CPopupRecipe)));
             _popups = GetEntityQuery(new QueryHelper().All(typeof(CPopup)));
+            _cards = GetEntityQuery(new QueryHelper().All(typeof(CTycoonCard)));
             RequireSingletonForUpdate<STycoonMode>();
         }
 
@@ -97,6 +99,19 @@ namespace PlateUpTycoon.Systems
                 _quietSince = -1f;
                 return;
             }
+
+            if (!TycoonGuide.Seen(TycoonGuide.MASTERY) && TycoonGuide.PageCount(TycoonGuide.MASTERY) > 0 && HasMasteryUnlock())
+            {
+                _pager.Start(TycoonGuide.MASTERY, "after the first Recipe Mastery level");
+                _quietSince = -1f;
+            }
+        }
+
+        private bool HasMasteryUnlock()
+        {
+            using NativeArray<CTycoonCard> cards = _cards.ToComponentDataArray<CTycoonCard>(Allocator.Temp);
+            foreach (CTycoonCard c in cards) if (c.Star == TycoonRecipeMastery.CARD_STAR) return true;
+            return false;
         }
     }
 }
