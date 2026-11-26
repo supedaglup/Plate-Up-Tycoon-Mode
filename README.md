@@ -32,12 +32,12 @@ Tycoon Mode is separate from regular PlateUp!. Your normal runs and saves are ne
 
 ## What's different
 
-- **No run end.** How busy and demanding your restaurant is follows its **star rating** (0 to 5), not the day number.
-- **Real money.** The till is the company's wallet, shared by all your restaurants. Every night you pay a bill:
+- How busy and demanding your restaurant is follows its **star rating** (0 to 5), not the day number.
+- The till is the company's wallet, shared by all your restaurants. Every night you pay a bill:
   utilities, upkeep, restocking, cleaning and wages for friends. Two closings in a row in debt means bankruptcy.
-- **You buy everything.** Appliances at the Purchasing Desk in the restaurant (they arrive the next day), recipes,
+- Appliances at the Purchasing Desk in the restaurant (they arrive the next day), recipes,
   customer cards and discount appliances at the HQ shops. There are no free picks.
-- **Reputation and stars.** Every serve earns reputation for speed, cleanliness, the cards you run and how good the
+- Every serve earns reputation for speed, cleanliness, the cards you run and how good the
   restaurant looks; some fades every night. Reach a star's total and a food critic visits to award it. Let it slip
   and a critic can take it away. A Reputation Report after each day shows where it came from.
 
@@ -48,11 +48,8 @@ Tycoon Mode is separate from regular PlateUp!. Your normal runs and saves are ne
 - **Management Desk:** switch cards on and off, and from higher stars set prices, ingredient quality, opening and
   closing times, marketing and contracts.
 - **Recipe Mastery:** serving a recipe levels it up and unlocks its add-ons.
-- **Kitchen load:** a bigger menu brings fewer customers, but each one pays more.
 - **Take-Out and Fast Casual:** customers order at a counter and take their food away, or sit down to eat.
 - **Ambience:** furniture, wallpaper and flooring customers can see raise or lower the reputation every serve earns.
-- **Health inspector:** rare surprise visits; messes and full bins they find cost reputation and a fine.
-- **Garage storage:** keep appliances and cards in the HQ garage for later.
 
 ## Star rewards
 
